@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM JS examples</title>
+
+    <script src="dom.js"></script>
+    <script src="domjs-extended.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+</head>
+<body title="DOM JS examples">
+    <div class="parent">
+        <div class="child">
+            <ul class="menu">
+                <li>
+                    <a href="#">Link 1</a>
+                </li>
+                <li>
+                    <a href="#">Link 2</a>
+                </li>
+                <li>
+                    <a href="#">Link 3</a>
+                </li>
+                <li>
+                    <a href="#"><div><span>222</span></div> Link 4</a>
+                </li>
+            </ul>
+        </div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child">
+            <h1>DOM JS</h1>
+            <span>Examples</span>
+            <input name="test" type="text" value="first input">
+        </div>
+
+        <form action="#" id="lock">
+            <div>
+                <input type="text" name="" value="123qwe">
+            </div>
+            <div>
+                <input type="password" name="" value="pass 123qwe">
+            </div>
+            <select name="" >
+                <option value="1">Test</option>
+            </select>
+            <div>
+                <textarea cols="30" rows="10">text</textarea>
+            </div>
+            <button>Fake Submit!</button>
+        </form>
+
+        <button id="unlock">unlock</button>
+
+    </div>
+    <script>
+
+        $(function () {
+            console.log($('input').parents('form').size());
+        });
+
+        (function (domjs) {
+            app.post('examples.html').then(function(data) {
+                console.dir(data);
+            });
+            domjs.ready(function($) {
+//                console.dir($('input').value('test').parents('form').attr('lol', Math.random()));
+//                console.log($('input').value(null, 2));
+
+                console.log($('input').parents('form').size);
+
+                domjs('button').on('click', function () {
+                    domjs('form#lock').lock().data('lockStatus', 'locked').css('border', '1px solid red');
+                });
+
+                domjs('button#unlock').on('click', function () {
+                    domjs('form#lock').unlock().data('lockStatus', 'unlocked').css({
+                        'border': '1px solid green'
+                    });
+                });
+            });
+        })(app.DOM);
+    </script>
+</body>
+</html>

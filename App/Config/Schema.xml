@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<database platform="mysql" name="" package="colibri_labs.database.om">
+
+  <table table="movies" name="movie">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="imdb_id" type="string" length="9" unsigned="true" autoIncrement="true" primaryKey="true"/>
+
+    <column column="budget" type="integer" length="11" unsigned="true"/>
+    <column column="revenue" type="integer" length="11" unsigned="true"/>
+    <column column="runtime" type="integer" length="11" unsigned="true"/>
+
+    <column column="release_date" type="datetime" />
+
+    <column column="title" type="string" length="255" />
+    <column column="soundex_title" type="string" length="255" />
+    <column column="metaphone_title" type="string" length="255" />
+
+    <column column="original_title" type="string" length="255" />
+    <column column="soundex_original_title" type="string" length="255" />
+    <column column="metaphone_original_title" type="string" length="255" />
+
+    <column column="iso_language" type="string" length="2" />
+
+    <column column="overview" type="text" />
+    <column column="tagline" type="text" />
+
+    <column column="tmdb_votes" type="integer" length="11" unsigned="true"/>
+    <column column="tmdb_rating" type="float" length="10" precision="4"/>
+    <column column="imdb_votes" type="integer" length="11" unsigned="true"/>
+    <column column="imdb_rating" type="float" length="10" precision="4"/>
+    <column column="mpaa_rating" type="enum" enum="G,PG,PG-13,R,NC-17"/>
+
+    <column column="version" type="integer" length="11" unsigned="true"/>
+
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="backdrops" name="backdrop">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="picture_id" type="integer" length="11" unsigned="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="posters" name="poster">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="picture_id" type="integer" length="11" unsigned="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="pictures" name="picture">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+
+    <column column="height" type="integer" length="11" unsigned="true"/>
+    <column column="width" type="integer" length="11" unsigned="true"/>
+
+    <column column="file_path" type="string" length="128"/>
+    <column column="tmdb_file_path" type="string" length="64"/>
+
+    <column column="iso_639_1" type="string" length="2"/>
+
+    <column column="version" type="integer" length="11" unsigned="true"/>
+
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="admin_users" name="user">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="email" type="string" length="64"/>
+    <column column="settings" type="json"/>
+    <column column="login" type="string" length="64"/>
+    <column column="password" type="string" length="64"/>
+  </table>
+
+  <table table="admin_user_sessions" name="user_session">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="user_id" type="integer" length="11" unsigned="true"/>
+    <column column="session_id" type="string" length="64"/>
+    <column column="ip" type="float" length="11" precision="0" />
+    <column column="user_agent" type="string" length="255"/>
+    <column column="os" type="string" length="32"/>
+    <column column="browser" type="string" length="32" />
+    <column column="device_type" type="string" length="8" />
+    <column column="is_mobile" type="boolean" />
+    <column column="created" type="datetime"/>
+  </table>
+
+</database>

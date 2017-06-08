@@ -1,0 +1,6 @@
+*~
+vendor
+App/Config/OrmDevelopment.php
+node_modules/
+Resources/tmdb/*
+data/*
