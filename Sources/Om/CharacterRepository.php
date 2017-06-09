@@ -7,9 +7,7 @@
 
 namespace ColibriLabs\Database\Om;
 
-class Movie extends Base\BaseMovie
+class CharacterRepository extends Base\BaseCharacterRepository
 {
-  
-  
-  
+  // ... write your custom code here
 }

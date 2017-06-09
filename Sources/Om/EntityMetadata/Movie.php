@@ -8,18 +8,16 @@ return array (
   'rawSQLNames' => 
   array (
     'id' => 'movies.id',
+    'collection_id' => 'movies.collection_id',
     'tmdb_id' => 'movies.tmdb_id',
     'imdb_id' => 'movies.imdb_id',
     'budget' => 'movies.budget',
     'revenue' => 'movies.revenue',
     'runtime' => 'movies.runtime',
+    'adult' => 'movies.adult',
     'release_date' => 'movies.release_date',
     'title' => 'movies.title',
-    'soundex_title' => 'movies.soundex_title',
-    'metaphone_title' => 'movies.metaphone_title',
     'original_title' => 'movies.original_title',
-    'soundex_original_title' => 'movies.soundex_original_title',
-    'metaphone_original_title' => 'movies.metaphone_original_title',
     'iso_language' => 'movies.iso_language',
     'overview' => 'movies.overview',
     'tagline' => 'movies.tagline',
@@ -35,18 +33,16 @@ return array (
   'names' => 
   array (
     'id' => 'id',
+    'collection_id' => 'collection_id',
     'tmdb_id' => 'tmdb_id',
     'imdb_id' => 'imdb_id',
     'budget' => 'budget',
     'revenue' => 'revenue',
     'runtime' => 'runtime',
+    'adult' => 'adult',
     'release_date' => 'release_date',
     'title' => 'title',
-    'soundex_title' => 'soundex_title',
-    'metaphone_title' => 'metaphone_title',
     'original_title' => 'original_title',
-    'soundex_original_title' => 'soundex_original_title',
-    'metaphone_original_title' => 'metaphone_original_title',
     'iso_language' => 'iso_language',
     'overview' => 'overview',
     'tagline' => 'tagline',
@@ -82,6 +78,7 @@ return array (
   'unsigned' => 
   array (
     'id' => 'id',
+    'collection_id' => 'collection_id',
     'tmdb_id' => 'tmdb_id',
     'imdb_id' => 'imdb_id',
     'budget' => 'budget',
@@ -94,8 +91,6 @@ return array (
   'primary' => 
   array (
     'id' => 'id',
-    'tmdb_id' => 'tmdb_id',
-    'imdb_id' => 'imdb_id',
   ),
   'instances' => 
   array (
@@ -116,6 +111,23 @@ return array (
        'primaryKey' => true,
        'identity' => false,
     )),
+    'collection_id' => 
+    Colibri\Schema\Field::__set_state(array(
+       'column' => 'collection_id',
+       'name' => 'collection_id',
+       'type' => 
+      Colibri\Schema\Types\IntegerType::__set_state(array(
+         'length' => 11,
+         'precision' => 0,
+         'extra' => NULL,
+      )),
+       'default' => NULL,
+       'unsigned' => true,
+       'nullable' => false,
+       'autoIncrement' => false,
+       'primaryKey' => false,
+       'identity' => false,
+    )),
     'tmdb_id' => 
     Colibri\Schema\Field::__set_state(array(
        'column' => 'tmdb_id',
@@ -129,8 +141,8 @@ return array (
        'default' => NULL,
        'unsigned' => true,
        'nullable' => false,
-       'autoIncrement' => true,
-       'primaryKey' => true,
+       'autoIncrement' => false,
+       'primaryKey' => false,
        'identity' => false,
     )),
     'imdb_id' => 
@@ -146,8 +158,8 @@ return array (
        'default' => NULL,
        'unsigned' => true,
        'nullable' => false,
-       'autoIncrement' => true,
-       'primaryKey' => true,
+       'autoIncrement' => false,
+       'primaryKey' => false,
        'identity' => false,
     )),
     'budget' => 
@@ -201,6 +213,23 @@ return array (
        'primaryKey' => false,
        'identity' => false,
     )),
+    'adult' => 
+    Colibri\Schema\Field::__set_state(array(
+       'column' => 'adult',
+       'name' => 'adult',
+       'type' => 
+      Colibri\Schema\Types\BooleanType::__set_state(array(
+         'length' => 0,
+         'precision' => 0,
+         'extra' => NULL,
+      )),
+       'default' => NULL,
+       'unsigned' => false,
+       'nullable' => false,
+       'autoIncrement' => false,
+       'primaryKey' => false,
+       'identity' => false,
+    )),
     'release_date' => 
     Colibri\Schema\Field::__set_state(array(
        'column' => 'release_date',
@@ -235,78 +264,10 @@ return array (
        'primaryKey' => false,
        'identity' => false,
     )),
-    'soundex_title' => 
-    Colibri\Schema\Field::__set_state(array(
-       'column' => 'soundex_title',
-       'name' => 'soundex_title',
-       'type' => 
-      Colibri\Schema\Types\StringType::__set_state(array(
-         'length' => 255,
-         'precision' => 0,
-         'extra' => NULL,
-      )),
-       'default' => NULL,
-       'unsigned' => false,
-       'nullable' => false,
-       'autoIncrement' => false,
-       'primaryKey' => false,
-       'identity' => false,
-    )),
-    'metaphone_title' => 
-    Colibri\Schema\Field::__set_state(array(
-       'column' => 'metaphone_title',
-       'name' => 'metaphone_title',
-       'type' => 
-      Colibri\Schema\Types\StringType::__set_state(array(
-         'length' => 255,
-         'precision' => 0,
-         'extra' => NULL,
-      )),
-       'default' => NULL,
-       'unsigned' => false,
-       'nullable' => false,
-       'autoIncrement' => false,
-       'primaryKey' => false,
-       'identity' => false,
-    )),
     'original_title' => 
     Colibri\Schema\Field::__set_state(array(
        'column' => 'original_title',
        'name' => 'original_title',
-       'type' => 
-      Colibri\Schema\Types\StringType::__set_state(array(
-         'length' => 255,
-         'precision' => 0,
-         'extra' => NULL,
-      )),
-       'default' => NULL,
-       'unsigned' => false,
-       'nullable' => false,
-       'autoIncrement' => false,
-       'primaryKey' => false,
-       'identity' => false,
-    )),
-    'soundex_original_title' => 
-    Colibri\Schema\Field::__set_state(array(
-       'column' => 'soundex_original_title',
-       'name' => 'soundex_original_title',
-       'type' => 
-      Colibri\Schema\Types\StringType::__set_state(array(
-         'length' => 255,
-         'precision' => 0,
-         'extra' => NULL,
-      )),
-       'default' => NULL,
-       'unsigned' => false,
-       'nullable' => false,
-       'autoIncrement' => false,
-       'primaryKey' => false,
-       'identity' => false,
-    )),
-    'metaphone_original_title' => 
-    Colibri\Schema\Field::__set_state(array(
-       'column' => 'metaphone_original_title',
-       'name' => 'metaphone_original_title',
        'type' => 
       Colibri\Schema\Types\StringType::__set_state(array(
          'length' => 255,

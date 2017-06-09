@@ -4,6 +4,9 @@ namespace ColibriLabs\Bin;
 
 use Colibri\ColibriORM;
 use Colibri\Common\Configuration;
+use ColibriLabs\Lib\Orm\Sluggable;
+use ColibriLabs\Lib\Orm\Timestampable;
+use ColibriLabs\Lib\Orm\Versionable;
 use Symfony\Component\Console\Application;
 
 /**
@@ -30,6 +33,12 @@ class UpdaterApplication extends Application
     && $configuration->merge(Configuration::createFromFile($developmentFile));
   
     $configuration->handlePlaceholders();
+    
+    ColibriORM::getServiceContainer()->getDispatcher()
+      ->subscribeListener(new Timestampable($configuration))
+      ->subscribeListener(new Versionable($configuration))
+      ->subscribeListener(new Sluggable($configuration))
+    ;
   }
   
 }

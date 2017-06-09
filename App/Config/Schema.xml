@@ -4,38 +4,138 @@
 
   <table table="movies" name="movie">
     <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
-    <column column="tmdb_id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
-    <column column="imdb_id" type="string" length="9" unsigned="true" autoIncrement="true" primaryKey="true"/>
-
+    <column column="collection_id" type="integer" length="11" unsigned="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
+    <column column="imdb_id" type="string" length="9" unsigned="true" />
     <column column="budget" type="integer" length="11" unsigned="true"/>
     <column column="revenue" type="integer" length="11" unsigned="true"/>
     <column column="runtime" type="integer" length="11" unsigned="true"/>
-
+    <column column="adult" type="boolean"/>
     <column column="release_date" type="datetime" />
-
     <column column="title" type="string" length="255" />
-    <column column="soundex_title" type="string" length="255" />
-    <column column="metaphone_title" type="string" length="255" />
-
     <column column="original_title" type="string" length="255" />
-    <column column="soundex_original_title" type="string" length="255" />
-    <column column="metaphone_original_title" type="string" length="255" />
-
     <column column="iso_language" type="string" length="2" />
-
     <column column="overview" type="text" />
     <column column="tagline" type="text" />
-
     <column column="tmdb_votes" type="integer" length="11" unsigned="true"/>
     <column column="tmdb_rating" type="float" length="10" precision="4"/>
     <column column="imdb_votes" type="integer" length="11" unsigned="true"/>
     <column column="imdb_rating" type="float" length="10" precision="4"/>
     <column column="mpaa_rating" type="enum" enum="G,PG,PG-13,R,NC-17"/>
-
     <column column="version" type="integer" length="11" unsigned="true"/>
-
     <column column="created" type="datetime"/>
     <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="movie_genre" name="movie_genre">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+    <column column="genre_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="movie_company" name="movie_company">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+    <column column="company_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="movie_country" name="movie_country">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+    <column column="country_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="movie_language" name="movie_language">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+    <column column="language_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="collections" name="collection">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
+    <column column="name" type="string" length="255" />
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="companies" name="company">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
+    <column column="name" type="string" length="255" />
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="countries" name="country">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="iso_3166_1" type="string" length="2" />
+    <column column="name" type="string" length="255" />
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="languages" name="language">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="iso_639_1" type="string" length="2" />
+    <column column="name" type="string" length="255" />
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="genres" name="genre">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
+    <column column="name" type="string" length="64"/>
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="characters" name="character">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="profile_id" type="integer" length="11" unsigned="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+    <column column="character" type="string" length="64"/>
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="crews" name="crew">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="profile_id" type="integer" length="11" unsigned="true"/>
+    <column column="movie_id" type="integer" length="11" unsigned="true"/>
+    <column column="department" type="string" length="64"/>
+    <column column="job" type="string" length="64"/>
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="profiles" name="profile">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
+    <column column="imdb_id" type="string" length="9" />
+    <column column="name" type="string" length="64" />
+    <column column="biography" type="text" />
+    <column column="adult" type="boolean"/>
+    <column column="sex" type="enum" enum="F,M" />
+    <column column="birthday" type="datetime"/>
+    <column column="deathday" type="datetime"/>
+    <column column="version" type="integer" length="11" unsigned="true"/>
+    <column column="created" type="datetime"/>
+    <column column="updated" type="datetime"/>
+  </table>
+
+  <table table="photos" name="photo">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="picture_id" type="integer" length="11" unsigned="true"/>
+    <column column="profile_id" type="integer" length="11" unsigned="true"/>
   </table>
 
   <table table="backdrops" name="backdrop">
@@ -52,17 +152,12 @@
 
   <table table="pictures" name="picture">
     <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
-
     <column column="height" type="integer" length="11" unsigned="true"/>
     <column column="width" type="integer" length="11" unsigned="true"/>
-
     <column column="file_path" type="string" length="128"/>
     <column column="tmdb_file_path" type="string" length="64"/>
-
     <column column="iso_639_1" type="string" length="2"/>
-
     <column column="version" type="integer" length="11" unsigned="true"/>
-
     <column column="created" type="datetime"/>
     <column column="updated" type="datetime"/>
   </table>

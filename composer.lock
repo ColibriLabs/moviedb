@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "df9d78358746186eb8346c43234d6a2d",
-    "content-hash": "e89c39f8874a637c56db8f2ea7e7581b",
+    "hash": "9b009e61dfb1b0a3aa295c591c5e90be",
+    "content-hash": "e27b7229be98c7a6b801b292c5daf13d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -50,654 +50,6 @@
                 "transliterator"
             ],
             "time": "2017-04-04 11:38:05"
-        },
-        {
-            "name": "colibrilabs/annotations",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/annotations.git",
-                "reference": "c47c2e189209941f62a05220cab5ca029efd70d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/annotations/zipball/c47c2e189209941f62a05220cab5ca029efd70d2",
-                "reference": "c47c2e189209941f62a05220cab5ca029efd70d2",
-                "shasum": ""
-            },
-            "require": {
-                "colibriphp/cache": "~1.0",
-                "colibriphp/collection": "~0.1",
-                "colibriphp/lexer": "~1.0",
-                "colibriphp/loader": "~0.1",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Annotations\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Annotations Library",
-            "keywords": [
-                "annotations"
-            ],
-            "time": "2017-05-23 08:56:21"
-        },
-        {
-            "name": "colibrilabs/cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/cache.git",
-                "reference": "ff89de5252a55b606ff5be2bebf2b41b2844131d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/cache/zipball/ff89de5252a55b606ff5be2bebf2b41b2844131d",
-                "reference": "ff89de5252a55b606ff5be2bebf2b41b2844131d",
-                "shasum": ""
-            },
-            "require": {
-                "league/flysystem": "^1.0",
-                "php": ">=5.6",
-                "predis/predis": "~1.0",
-                "psr/cache": "~1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com",
-                    "homepage": "http://fux7.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Colibri Cache Component",
-            "keywords": [
-                "cache",
-                "colibri cache",
-                "php cache",
-                "psr-6"
-            ],
-            "time": "2017-05-23 09:11:56"
-        },
-        {
-            "name": "colibrilabs/collection",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/collection.git",
-                "reference": "c5e379f46a75da1e6ec916ff418fe83b96f74630"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/collection/zipball/c5e379f46a75da1e6ec916ff418fe83b96f74630",
-                "reference": "c5e379f46a75da1e6ec916ff418fe83b96f74630",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Collection\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Collection Library",
-            "keywords": [
-                "collection",
-                "php collection"
-            ],
-            "time": "2017-05-23 09:29:23"
-        },
-        {
-            "name": "colibrilabs/html",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/html.git",
-                "reference": "fe2e3d0c4591f552e68c2a0f85efa334d54fcda0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/html/zipball/fe2e3d0c4591f552e68c2a0f85efa334d54fcda0",
-                "reference": "fe2e3d0c4591f552e68c2a0f85efa334d54fcda0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Html\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Html Library",
-            "keywords": [
-                "html",
-                "php html"
-            ],
-            "time": "2017-05-23 09:11:06"
-        },
-        {
-            "name": "colibrilabs/http",
-            "version": "v0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/http.git",
-                "reference": "64125ff0cc08939a767d3b48e82c6bceaf1ea9e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/http/zipball/64125ff0cc08939a767d3b48e82c6bceaf1ea9e1",
-                "reference": "64125ff0cc08939a767d3b48e82c6bceaf1ea9e1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Http\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Http Library",
-            "keywords": [
-                "colibri http",
-                "http",
-                "php http"
-            ],
-            "time": "2017-05-23 09:07:31"
-        },
-        {
-            "name": "colibrilabs/loader",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/loader.git",
-                "reference": "ca98e392df324de0bba74bee6b749e70bf564160"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/loader/zipball/ca98e392df324de0bba74bee6b749e70bf564160",
-                "reference": "ca98e392df324de0bba74bee6b749e70bf564160",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Loader\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Universal Autoloader",
-            "keywords": [
-                "autoloader",
-                "loader",
-                "php autoloader",
-                "php loader"
-            ],
-            "time": "2017-05-23 08:54:19"
-        },
-        {
-            "name": "colibrilabs/orm",
-            "version": "v1.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/orm.git",
-                "reference": "0f280fcc1a1ff7dbde4bac0ec70164c1169f6f4d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/orm/zipball/0f280fcc1a1ff7dbde4bac0ec70164c1169f6f4d",
-                "reference": "0f280fcc1a1ff7dbde4bac0ec70164c1169f6f4d",
-                "shasum": ""
-            },
-            "require": {
-                "behat/transliterator": "~1.1",
-                "colibrilabs/collection": "~0.1",
-                "colibrilabs/html": "~0.1",
-                "colibrilabs/parameters": "~0.1",
-                "php": ">=5.6",
-                "psr/cache": "~1.0",
-                "psr/log": "~1.0",
-                "symfony/console": "~2.3||~3.0",
-                "symfony/yaml": "~2.3||~3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\": "src/Colibri"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com",
-                    "homepage": "http://cv.dezz.pro/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Colibri ORM - Yet Another PHP ORM",
-            "keywords": [
-                "colibri",
-                "colibri orm",
-                "php orm"
-            ],
-            "time": "2017-06-05 09:34:57"
-        },
-        {
-            "name": "colibrilabs/parameters",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/parameters.git",
-                "reference": "408c31f0806696384c8af2e5a850365f663af59e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/parameters/zipball/408c31f0806696384c8af2e5a850365f663af59e",
-                "reference": "408c31f0806696384c8af2e5a850365f663af59e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "symfony/yaml": "~3.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Parameters\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Parameters Reader 🍓",
-            "keywords": [
-                "parameters",
-                "php parameters"
-            ],
-            "time": "2017-05-23 08:55:27"
-        },
-        {
-            "name": "colibrilabs/router",
-            "version": "v0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/router.git",
-                "reference": "f40260d0c50c276e5ad9f0bd7c23ea80b8644e15"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/router/zipball/f40260d0c50c276e5ad9f0bd7c23ea80b8644e15",
-                "reference": "f40260d0c50c276e5ad9f0bd7c23ea80b8644e15",
-                "shasum": ""
-            },
-            "require": {
-                "colibrilabs/http": "~0.1",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Router\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Router Library",
-            "keywords": [
-                "colibriphp router",
-                "php router",
-                "router"
-            ],
-            "time": "2017-05-23 09:28:05"
-        },
-        {
-            "name": "colibrilabs/service-locator",
-            "version": "v0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/service-locator.git",
-                "reference": "822b755279f06778e6296bfdd094c1595394779b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/service-locator/zipball/822b755279f06778e6296bfdd094c1595394779b",
-                "reference": "822b755279f06778e6296bfdd094c1595394779b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\ServiceLocator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Service Locator Library",
-            "keywords": [
-                "php service locator",
-                "service locator"
-            ],
-            "time": "2017-05-23 08:54:55"
-        },
-        {
-            "name": "colibrilabs/session",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/session.git",
-                "reference": "a0955aa163e653194810ea647ba01841273073e3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/session/zipball/a0955aa163e653194810ea647ba01841273073e3",
-                "reference": "a0955aa163e653194810ea647ba01841273073e3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Session\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Session Library",
-            "keywords": [
-                "php session",
-                "session"
-            ],
-            "time": "2017-05-23 09:10:44"
-        },
-        {
-            "name": "colibrilabs/template",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/template.git",
-                "reference": "c5ec6aa03da835a3e5553f5c5ebface12a5ef6e8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/template/zipball/c5ec6aa03da835a3e5553f5c5ebface12a5ef6e8",
-                "reference": "c5ec6aa03da835a3e5553f5c5ebface12a5ef6e8",
-                "shasum": ""
-            },
-            "require": {
-                "colibrilabs/collection": "~0.1",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\Template\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "Template Library",
-            "keywords": [
-                "php template",
-                "template"
-            ],
-            "time": "2017-05-23 09:27:23"
-        },
-        {
-            "name": "colibrilabs/uri",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/uri.git",
-                "reference": "d0db8c7af9671658be203457b563700bace9259b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/uri/zipball/d0db8c7af9671658be203457b563700bace9259b",
-                "reference": "d0db8c7af9671658be203457b563700bace9259b",
-                "shasum": ""
-            },
-            "require": {
-                "colibrilabs/http": "~0.1",
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\URI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "URL/URI Library",
-            "keywords": [
-                "dez-php url",
-                "php url",
-                "uri",
-                "url",
-                "url builder"
-            ],
-            "time": "2017-05-23 09:27:55"
-        },
-        {
-            "name": "colibrilabs/url-generator",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/url-generator.git",
-                "reference": "c5e865c21ac7a01e8ba696ea674c96fc7b84722a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/url-generator/zipball/c5e865c21ac7a01e8ba696ea674c96fc7b84722a",
-                "reference": "c5e865c21ac7a01e8ba696ea674c96fc7b84722a",
-                "shasum": ""
-            },
-            "require": {
-                "colibrilabs/router": "~0.1",
-                "colibrilabs/uri": "~0.1",
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\UrlGenerator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "URL Generator Library",
-            "keywords": [
-                "Url Generator",
-                "php url",
-                "uri",
-                "url"
-            ],
-            "time": "2017-05-23 09:27:37"
-        },
-        {
-            "name": "colibrilabs/webapp",
-            "version": "v0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colibrilabs/webapp.git",
-                "reference": "1b3271126ad527fb3f1a05fbd1d1a5c4a30d92da"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/webapp/zipball/1b3271126ad527fb3f1a05fbd1d1a5c4a30d92da",
-                "reference": "1b3271126ad527fb3f1a05fbd1d1a5c4a30d92da",
-                "shasum": ""
-            },
-            "require": {
-                "colibrilabs/annotations": "~1.0",
-                "colibrilabs/html": "~0.1",
-                "colibrilabs/http": "~0.1",
-                "colibrilabs/loader": "~1.0",
-                "colibrilabs/parameters": "~0.1",
-                "colibrilabs/router": "~0.1",
-                "colibrilabs/service-locator": "~0.1",
-                "colibrilabs/session": "~0.1",
-                "colibrilabs/template": "~1.0",
-                "colibrilabs/uri": "~0.1",
-                "colibrilabs/url-generator": "~0.1",
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colibri\\WebApp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Hontarenko",
-                    "email": "stewie.dev@gmail.com"
-                }
-            ],
-            "description": "MVC Application Collected From ColibriPhp Libraries",
-            "keywords": [
-                "mvc app",
-                "php webapp",
-                "webapp"
-            ],
-            "time": "2017-05-23 15:43:52"
         },
         {
             "name": "colibriphp/cache",
@@ -787,26 +139,26 @@
             "time": "2017-05-05 12:09:42"
         },
         {
-            "name": "colibriphp/lexer",
-            "version": "1.2.0",
+            "name": "colibriphp/html",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/colibriphp/lexer.git",
-                "reference": "12a481500aa1ef677a7483daca0981587157a428"
+                "url": "https://github.com/colibriphp/html.git",
+                "reference": "c4ba357ee6bb50663ffdde5a6828b5e38635ad74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/colibriphp/lexer/zipball/12a481500aa1ef677a7483daca0981587157a428",
-                "reference": "12a481500aa1ef677a7483daca0981587157a428",
+                "url": "https://api.github.com/repos/colibriphp/html/zipball/c4ba357ee6bb50663ffdde5a6828b5e38635ad74",
+                "reference": "c4ba357ee6bb50663ffdde5a6828b5e38635ad74",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=5.5"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Colibri\\Lexer\\": "src"
+                    "Colibri\\Html\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -819,11 +171,53 @@
                     "email": "stewie.dev@gmail.com"
                 }
             ],
-            "description": "Abstract Lexer",
+            "description": "Html Library",
             "keywords": [
-                "lexer"
+                "html",
+                "php html"
             ],
-            "time": "2017-05-19 08:09:30"
+            "time": "2017-05-13 08:28:34"
+        },
+        {
+            "name": "colibriphp/http",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colibriphp/http.git",
+                "reference": "c751c9541e6bc24b62195f1accd72c23153f5aad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colibriphp/http/zipball/c751c9541e6bc24b62195f1accd72c23153f5aad",
+                "reference": "c751c9541e6bc24b62195f1accd72c23153f5aad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Colibri\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
+                }
+            ],
+            "description": "Http Library",
+            "keywords": [
+                "colibri http",
+                "http",
+                "php http"
+            ],
+            "time": "2017-05-04 14:56:23"
         },
         {
             "name": "colibriphp/loader",
@@ -868,39 +262,34 @@
             "time": "2017-05-12 11:05:31"
         },
         {
-            "name": "doctrine/cache",
-            "version": "v1.6.1",
+            "name": "colibriphp/orm",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/cache.git",
-                "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3"
+                "url": "https://github.com/colibriphp/orm.git",
+                "reference": "2845d26a0fe71feaddec907f6a00e078f221353c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/b6f544a20f4807e81f7044d31e679ccbb1866dc3",
-                "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3",
+                "url": "https://api.github.com/repos/colibriphp/orm/zipball/2845d26a0fe71feaddec907f6a00e078f221353c",
+                "reference": "2845d26a0fe71feaddec907f6a00e078f221353c",
                 "shasum": ""
             },
             "require": {
-                "php": "~5.5|~7.0"
-            },
-            "conflict": {
-                "doctrine/common": ">2.2,<2.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.0",
-                "predis/predis": "~1.0",
-                "satooshi/php-coveralls": "~0.6"
+                "behat/transliterator": "~1.1",
+                "colibriphp/collection": "~0.1",
+                "colibriphp/html": "~0.1",
+                "colibriphp/parameters": "~0.1",
+                "php": ">=5.6",
+                "psr/cache": "~1.0",
+                "psr/log": "~1.0",
+                "symfony/console": "~2.3||~3.0",
+                "symfony/yaml": "~2.3||~3.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
+                    "Colibri\\": "src/Colibri"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -909,70 +298,164 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com",
+                    "homepage": "http://cv.dezz.pro/",
+                    "role": "Developer"
                 }
             ],
-            "description": "Caching library offering an object-oriented API for many cache backends",
-            "homepage": "http://www.doctrine-project.org",
+            "description": "Colibri ORM - Yet Another PHP ORM",
             "keywords": [
-                "cache",
-                "caching"
+                "colibri",
+                "colibri orm",
+                "php orm"
             ],
-            "time": "2016-10-29 11:16:17"
+            "time": "2017-05-12 17:47:31"
         },
         {
-            "name": "guzzlehttp/guzzle",
-            "version": "6.2.3",
+            "name": "colibriphp/parameters",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006"
+                "url": "https://github.com/colibriphp/parameters.git",
+                "reference": "488a7b48478a204b13864471fcedd42e1781d68e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8d6c6cc55186db87b7dc5009827429ba4e9dc006",
-                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006",
+                "url": "https://api.github.com/repos/colibriphp/parameters/zipball/488a7b48478a204b13864471fcedd42e1781d68e",
+                "reference": "488a7b48478a204b13864471fcedd42e1781d68e",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.5",
+                "symfony/yaml": "~3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Colibri\\Parameters\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
+                }
+            ],
+            "description": "Parameters Reader 🍓",
+            "keywords": [
+                "parameters",
+                "php parameters"
+            ],
+            "time": "2017-05-05 12:07:13"
+        },
+        {
+            "name": "colibriphp/router",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colibriphp/router.git",
+                "reference": "ad588e135f7d4a078f50559c814926d92e708399"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colibriphp/router/zipball/ad588e135f7d4a078f50559c814926d92e708399",
+                "reference": "ad588e135f7d4a078f50559c814926d92e708399",
+                "shasum": ""
+            },
+            "require": {
+                "colibriphp/http": "~0.1",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Colibri\\Router\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
+                }
+            ],
+            "description": "Router Library",
+            "keywords": [
+                "colibriphp router",
+                "php router",
+                "router"
+            ],
+            "time": "2017-05-12 15:16:18"
+        },
+        {
+            "name": "colibriphp/service-locator",
+            "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colibriphp/service-locator.git",
+                "reference": "478408dcfa4c2316f8306daab4e31a0c169538f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colibriphp/service-locator/zipball/478408dcfa4c2316f8306daab4e31a0c169538f5",
+                "reference": "478408dcfa4c2316f8306daab4e31a0c169538f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Colibri\\ServiceLocator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
+                }
+            ],
+            "description": "Service Locator Library",
+            "keywords": [
+                "php service locator",
+                "service locator"
+            ],
+            "time": "2017-05-12 17:51:48"
+        },
+        {
+            "name": "colibriphp/session",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colibriphp/session.git",
+                "reference": "9766b70fd7a5e05f95b9b3563d8b02ca2caf4c10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colibriphp/session/zipball/9766b70fd7a5e05f95b9b3563d8b02ca2caf4c10",
+                "reference": "9766b70fd7a5e05f95b9b3563d8b02ca2caf4c10",
+                "shasum": ""
+            },
+            "require": {
                 "php": ">=5.5"
             },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "^4.0",
-                "psr/log": "^1.0"
-            },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.2-dev"
-                }
-            },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
-                    "GuzzleHttp\\": "src/"
+                    "Colibri\\Session\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -981,57 +464,40 @@
             ],
             "authors": [
                 {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
                 }
             ],
-            "description": "Guzzle is a PHP HTTP client library",
-            "homepage": "http://guzzlephp.org/",
+            "description": "Session Library",
             "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
+                "php session",
+                "session"
             ],
-            "time": "2017-02-28 22:50:30"
+            "time": "2017-05-12 14:33:37"
         },
         {
-            "name": "guzzlehttp/promises",
-            "version": "v1.3.1",
+            "name": "colibriphp/template",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/promises.git",
-                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+                "url": "https://github.com/colibriphp/template.git",
+                "reference": "0ad1e9286b124ffed1e8b9c365fccf3c045c6ee0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
-                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "url": "https://api.github.com/repos/colibriphp/template/zipball/0ad1e9286b124ffed1e8b9c365fccf3c045c6ee0",
+                "reference": "0ad1e9286b124ffed1e8b9c365fccf3c045c6ee0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0"
+                "colibriphp/collection": "~0.1",
+                "php": ">=5.6"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "GuzzleHttp\\Promise\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
+                    "Colibri\\Template\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1039,54 +505,40 @@
             ],
             "authors": [
                 {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
                 }
             ],
-            "description": "Guzzle promises library",
+            "description": "Template Library",
             "keywords": [
-                "promise"
+                "php template",
+                "template"
             ],
-            "time": "2016-12-20 10:07:11"
+            "time": "2017-05-13 11:03:17"
         },
         {
-            "name": "guzzlehttp/psr7",
-            "version": "1.4.2",
+            "name": "colibriphp/uri",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+                "url": "https://github.com/colibriphp/uri.git",
+                "reference": "ac8a00b6bcb8bb8b35a67908449b9822da356757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "url": "https://api.github.com/repos/colibriphp/uri/zipball/ac8a00b6bcb8bb8b35a67908449b9822da356757",
+                "reference": "ac8a00b6bcb8bb8b35a67908449b9822da356757",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "colibriphp/http": "~0.1",
+                "php": ">=5.5"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
+                    "Colibri\\URI\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1094,67 +546,95 @@
             ],
             "authors": [
                 {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Tobias Schultze",
-                    "homepage": "https://github.com/Tobion"
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
                 }
             ],
-            "description": "PSR-7 message implementation that also provides common utility methods",
+            "description": "URL/URI Library",
             "keywords": [
-                "http",
-                "message",
-                "request",
-                "response",
-                "stream",
+                "dez-php url",
+                "php url",
+                "uri",
+                "url",
+                "url builder"
+            ],
+            "time": "2017-05-05 09:10:46"
+        },
+        {
+            "name": "colibriphp/url-generator",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colibriphp/url-generator.git",
+                "reference": "73fd735ea07bdc24b3a0d41a8e284c65f53b5362"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colibriphp/url-generator/zipball/73fd735ea07bdc24b3a0d41a8e284c65f53b5362",
+                "reference": "73fd735ea07bdc24b3a0d41a8e284c65f53b5362",
+                "shasum": ""
+            },
+            "require": {
+                "colibriphp/router": "~0.1",
+                "colibriphp/uri": "~0.1",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Colibri\\UrlGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
+                }
+            ],
+            "description": "URL Generator Library",
+            "keywords": [
+                "Url Generator",
+                "php url",
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20 17:10:46"
+            "time": "2017-05-05 09:22:02"
         },
         {
-            "name": "kevinrob/guzzle-cache-middleware",
-            "version": "v1.5.2",
+            "name": "colibriphp/webapp",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Kevinrob/guzzle-cache-middleware.git",
-                "reference": "2893fff87ef9f7f2c669957f5e446beea48d7a1d"
+                "url": "https://github.com/colibriphp/webapp.git",
+                "reference": "dda56399627b434f31215077d226b0ff332b98b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kevinrob/guzzle-cache-middleware/zipball/2893fff87ef9f7f2c669957f5e446beea48d7a1d",
-                "reference": "2893fff87ef9f7f2c669957f5e446beea48d7a1d",
+                "url": "https://api.github.com/repos/colibriphp/webapp/zipball/dda56399627b434f31215077d226b0ff332b98b5",
+                "reference": "dda56399627b434f31215077d226b0ff332b98b5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "cache/array-adapter": "^0.4",
-                "doctrine/cache": "^1.0",
-                "guzzlehttp/guzzle": "^6.0",
-                "illuminate/cache": "^5.0",
-                "league/flysystem": "^1.0",
-                "phpunit/phpunit": "^4.0 || ^5.0",
-                "psr/cache": "^1.0"
-            },
-            "suggest": {
-                "doctrine/cache": "This library have a lot of ready-to-use cache storage (to be use with Kevinrob\\GuzzleCache\\Storage\\DoctrineCacheStorage)",
-                "guzzlehttp/guzzle": "For using this library. It was created for Guzzle6. (but you can use it with any PSR-7 HTTP Client)",
-                "laravel/framework": "To be use with Kevinrob\\GuzzleCache\\Storage\\LaravelCacheStorage",
-                "league/flysystem": "To be use with Kevinrob\\GuzzleCache\\Storage\\FlysystemStorage",
-                "psr/cache": "To be use with Kevinrob\\GuzzleCache\\Storage\\Psr6CacheStorage"
+                "colibriphp/html": "~0.1",
+                "colibriphp/http": "~0.1",
+                "colibriphp/loader": "~0.1",
+                "colibriphp/parameters": "~0.1",
+                "colibriphp/router": "~0.1",
+                "colibriphp/service-locator": "~0.1",
+                "colibriphp/session": "~0.1",
+                "colibriphp/template": "~1.0",
+                "colibriphp/uri": "~0.1",
+                "colibriphp/url-generator": "~0.1",
+                "php": ">=5.5"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kevinrob\\GuzzleCache\\": [
-                        "src/",
-                        "tests/"
-                    ]
+                    "Colibri\\WebApp\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1163,35 +643,17 @@
             ],
             "authors": [
                 {
-                    "name": "Kevin Robatel",
-                    "email": "kevinrob2@gmail.com",
-                    "homepage": "https://github.com/Kevinrob"
+                    "name": "Ivan Hontarenko",
+                    "email": "stewie.dev@gmail.com"
                 }
             ],
-            "description": "A HTTP/1.1 Cache for Guzzle 6. It's a simple Middleware to be added in the HandlerStack. (RFC 7234)",
-            "homepage": "https://github.com/Kevinrob/guzzle-cache-middleware",
+            "description": "MVC Application Collected From ColibriPhp Libraries",
             "keywords": [
-                "Etag",
-                "Flysystem",
-                "Guzzle",
-                "cache",
-                "cache-control",
-                "doctrine",
-                "expiration",
-                "guzzle6",
-                "handler",
-                "http",
-                "http 1.1",
-                "middleware",
-                "performance",
-                "php",
-                "promise",
-                "psr6",
-                "psr7",
-                "rfc7234",
-                "validation"
+                "mvc app",
+                "php webapp",
+                "webapp"
             ],
-            "time": "2017-01-16 07:02:13"
+            "time": "2017-05-12 15:54:00"
         },
         {
             "name": "league/flysystem",
@@ -1275,74 +737,6 @@
                 "storage"
             ],
             "time": "2017-04-28 10:15:08"
-        },
-        {
-            "name": "php-tmdb/api",
-            "version": "v2.1.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-tmdb/api.git",
-                "reference": "1c2e87653f6df62ea9075b7118c2a80dcb355f66"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-tmdb/api/zipball/1c2e87653f6df62ea9075b7118c2a80dcb355f66",
-                "reference": "1c2e87653f6df62ea9075b7118c2a80dcb355f66",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/cache": "^1.6",
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "~6.0",
-                "kevinrob/guzzle-cache-middleware": "^1.2",
-                "php": ">=5.6.0",
-                "psr/log": "~1.0",
-                "rtheunissen/guzzle-log-middleware": "^0.4.0",
-                "symfony/event-dispatcher": ">=2.4,<4",
-                "symfony/options-resolver": ">=2.6,<4"
-            },
-            "require-dev": {
-                "monolog/monolog": ">=1.11.0",
-                "phpunit/phpunit": ">=5.7,<6"
-            },
-            "suggest": {
-                "monolog/monolog": "Required if you want to make use of logging features."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tmdb\\": "lib/Tmdb"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Roterman",
-                    "email": "michael@wtfz.net",
-                    "homepage": "http://wtfz.net"
-                }
-            ],
-            "description": "PHP wrapper for TMDB (TheMovieDatabase) API v3. Supports two types of approaches, one modelled with repositories, models and factories. And the other by simple array access to RAW data from The Movie Database.",
-            "homepage": "https://github.com/wtfzdotnet/php-tmdb-api",
-            "keywords": [
-                "api",
-                "movie",
-                "php",
-                "tmdb",
-                "tv",
-                "tv show",
-                "tvdb",
-                "wrapper"
-            ],
-            "time": "2017-06-02 03:27:09"
         },
         {
             "name": "predis/predis",
@@ -1441,56 +835,6 @@
             "time": "2016-08-06 20:24:11"
         },
         {
-            "name": "psr/http-message",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "homepage": "https://github.com/php-fig/http-message",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2016-08-06 14:39:51"
-        },
-        {
             "name": "psr/log",
             "version": "1.0.2",
             "source": {
@@ -1538,70 +882,17 @@
             "time": "2016-10-10 12:19:37"
         },
         {
-            "name": "rtheunissen/guzzle-log-middleware",
-            "version": "v0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rtheunissen/guzzle-log-middleware.git",
-                "reference": "7b6f2884b623091e58276500f38499f238d7d4e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rtheunissen/guzzle-log-middleware/zipball/7b6f2884b623091e58276500f38499f238d7d4e2",
-                "reference": "7b6f2884b623091e58276500f38499f238d7d4e2",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0",
-                "php": ">=5.5",
-                "psr/log": "~1.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "~4.6"
-            },
-            "suggest": {
-                "monolog/monolog": "Recommended PSR-3 logger"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Concat\\Http\\Middleware\\": "src/",
-                    "Concat\\Http\\Middleware\\Test\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rudi Theunissen",
-                    "email": "rudolf.theunissen@gmail.com"
-                }
-            ],
-            "description": "Guzzle middleware to log requests and responses",
-            "keywords": [
-                "Guzzle",
-                "http",
-                "log",
-                "middleware",
-                "psr7"
-            ],
-            "time": "2015-06-16 06:35:18"
-        },
-        {
             "name": "symfony/console",
-            "version": "v3.3.2",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "70d2a29b2911cbdc91a7e268046c395278238b2e"
+                "reference": "c80e63f3f5e3a331bfc25e6e9332b10422eb9b05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/70d2a29b2911cbdc91a7e268046c395278238b2e",
-                "reference": "70d2a29b2911cbdc91a7e268046c395278238b2e",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c80e63f3f5e3a331bfc25e6e9332b10422eb9b05",
+                "reference": "c80e63f3f5e3a331bfc25e6e9332b10422eb9b05",
                 "shasum": ""
             },
             "require": {
@@ -1614,18 +905,17 @@
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~3.3",
                 "symfony/dependency-injection": "~3.3",
                 "symfony/event-dispatcher": "~2.8|~3.0",
                 "symfony/filesystem": "~2.8|~3.0",
                 "symfony/http-kernel": "~2.8|~3.0",
-                "symfony/process": "~2.8|~3.0"
+                "symfony/processMovie": "~2.8|~3.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": "",
                 "symfony/filesystem": "",
-                "symfony/process": ""
+                "symfony/processMovie": ""
             },
             "type": "library",
             "extra": {
@@ -1657,20 +947,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02 19:24:58"
+            "time": "2017-05-28 14:08:56"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.3.2",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "e9c50482841ef696e8fa1470d950a79c8921f45d"
+                "reference": "ef5f19a7a68075a0bd05969a329ead3b0776fb7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/e9c50482841ef696e8fa1470d950a79c8921f45d",
-                "reference": "e9c50482841ef696e8fa1470d950a79c8921f45d",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/ef5f19a7a68075a0bd05969a329ead3b0776fb7a",
+                "reference": "ef5f19a7a68075a0bd05969a329ead3b0776fb7a",
                 "shasum": ""
             },
             "require": {
@@ -1713,124 +1003,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01 21:01:25"
-        },
-        {
-            "name": "symfony/event-dispatcher",
-            "version": "v3.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "4054a102470665451108f9b59305c79176ef98f0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/4054a102470665451108f9b59305c79176ef98f0",
-                "reference": "4054a102470665451108f9b59305c79176ef98f0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "conflict": {
-                "symfony/dependency-injection": "<3.3"
-            },
-            "require-dev": {
-                "psr/log": "~1.0",
-                "symfony/config": "~2.8|~3.0",
-                "symfony/dependency-injection": "~3.3",
-                "symfony/expression-language": "~2.8|~3.0",
-                "symfony/stopwatch": "~2.8|~3.0"
-            },
-            "suggest": {
-                "symfony/dependency-injection": "",
-                "symfony/http-kernel": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\EventDispatcher\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony EventDispatcher Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-06-04 18:15:29"
-        },
-        {
-            "name": "symfony/options-resolver",
-            "version": "v3.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "ff48982d295bcac1fd861f934f041ebc73ae40f0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/ff48982d295bcac1fd861f934f041ebc73ae40f0",
-                "reference": "ff48982d295bcac1fd861f934f041ebc73ae40f0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\OptionsResolver\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony OptionsResolver Component",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "config",
-                "configuration",
-                "options"
-            ],
-            "time": "2017-04-12 14:14:56"
+            "time": "2017-05-27 16:02:27"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1893,16 +1066,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.2",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063"
+                "reference": "885db865f6b2b918404a1fae28f9ac640f71f994"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/9752a30000a8ca9f4b34b5227d15d0101b96b063",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/885db865f6b2b918404a1fae28f9ac640f71f994",
+                "reference": "885db865f6b2b918404a1fae28f9ac640f71f994",
                 "shasum": ""
             },
             "require": {
@@ -1944,7 +1117,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02 22:05:06"
+            "time": "2017-05-28 10:56:20"
         }
     ],
     "packages-dev": [],

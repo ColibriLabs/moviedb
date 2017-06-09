@@ -7,7 +7,11 @@
 
 namespace ColibriLabs\Database\Om;
 
+/**
+ * Class MovieRepository
+ * @package ColibriLabs\Database\Om
+ */
 class MovieRepository extends Base\BaseMovieRepository
 {
-  // ... write your custom code here
+    
 }

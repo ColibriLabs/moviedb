@@ -22,6 +22,21 @@ return [
       'autoload_file' => 'autoload.php',
       'metadata_file' => 'metadata.php',
     ],
-  
   ],
+  
+  'extensions' => [
+    'sluggable' => [],
+    'timestampable' => [
+      \ColibriLabs\Database\Om\Movie::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']]
+      ]
+    ],
+    'versionable' => [
+      \ColibriLabs\Database\Om\Movie::class => [
+        'properties' => ['version']
+      ]
+    ]
+  ]
+  
 ];

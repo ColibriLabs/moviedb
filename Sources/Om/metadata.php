@@ -15,18 +15,16 @@ return array (
     'rawSQLNames' => 
     array (
       'id' => 'movies.id',
+      'collection_id' => 'movies.collection_id',
       'tmdb_id' => 'movies.tmdb_id',
       'imdb_id' => 'movies.imdb_id',
       'budget' => 'movies.budget',
       'revenue' => 'movies.revenue',
       'runtime' => 'movies.runtime',
+      'adult' => 'movies.adult',
       'release_date' => 'movies.release_date',
       'title' => 'movies.title',
-      'soundex_title' => 'movies.soundex_title',
-      'metaphone_title' => 'movies.metaphone_title',
       'original_title' => 'movies.original_title',
-      'soundex_original_title' => 'movies.soundex_original_title',
-      'metaphone_original_title' => 'movies.metaphone_original_title',
       'iso_language' => 'movies.iso_language',
       'overview' => 'movies.overview',
       'tagline' => 'movies.tagline',
@@ -42,18 +40,16 @@ return array (
     'names' => 
     array (
       'id' => 'id',
+      'collection_id' => 'collection_id',
       'tmdb_id' => 'tmdb_id',
       'imdb_id' => 'imdb_id',
       'budget' => 'budget',
       'revenue' => 'revenue',
       'runtime' => 'runtime',
+      'adult' => 'adult',
       'release_date' => 'release_date',
       'title' => 'title',
-      'soundex_title' => 'soundex_title',
-      'metaphone_title' => 'metaphone_title',
       'original_title' => 'original_title',
-      'soundex_original_title' => 'soundex_original_title',
-      'metaphone_original_title' => 'metaphone_original_title',
       'iso_language' => 'iso_language',
       'overview' => 'overview',
       'tagline' => 'tagline',
@@ -89,6 +85,7 @@ return array (
     'unsigned' => 
     array (
       'id' => 'id',
+      'collection_id' => 'collection_id',
       'tmdb_id' => 'tmdb_id',
       'imdb_id' => 'imdb_id',
       'budget' => 'budget',
@@ -101,8 +98,6 @@ return array (
     'primary' => 
     array (
       'id' => 'id',
-      'tmdb_id' => 'tmdb_id',
-      'imdb_id' => 'imdb_id',
     ),
     'instances' => 
     array (
@@ -123,6 +118,23 @@ return array (
          'primaryKey' => true,
          'identity' => false,
       )),
+      'collection_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'collection_id',
+         'name' => 'collection_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
       'tmdb_id' => 
       Colibri\Schema\Field::__set_state(array(
          'column' => 'tmdb_id',
@@ -136,8 +148,8 @@ return array (
          'default' => NULL,
          'unsigned' => true,
          'nullable' => false,
-         'autoIncrement' => true,
-         'primaryKey' => true,
+         'autoIncrement' => false,
+         'primaryKey' => false,
          'identity' => false,
       )),
       'imdb_id' => 
@@ -153,8 +165,8 @@ return array (
          'default' => NULL,
          'unsigned' => true,
          'nullable' => false,
-         'autoIncrement' => true,
-         'primaryKey' => true,
+         'autoIncrement' => false,
+         'primaryKey' => false,
          'identity' => false,
       )),
       'budget' => 
@@ -208,6 +220,23 @@ return array (
          'primaryKey' => false,
          'identity' => false,
       )),
+      'adult' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'adult',
+         'name' => 'adult',
+         'type' => 
+        Colibri\Schema\Types\BooleanType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
       'release_date' => 
       Colibri\Schema\Field::__set_state(array(
          'column' => 'release_date',
@@ -242,78 +271,10 @@ return array (
          'primaryKey' => false,
          'identity' => false,
       )),
-      'soundex_title' => 
-      Colibri\Schema\Field::__set_state(array(
-         'column' => 'soundex_title',
-         'name' => 'soundex_title',
-         'type' => 
-        Colibri\Schema\Types\StringType::__set_state(array(
-           'length' => 255,
-           'precision' => 0,
-           'extra' => NULL,
-        )),
-         'default' => NULL,
-         'unsigned' => false,
-         'nullable' => false,
-         'autoIncrement' => false,
-         'primaryKey' => false,
-         'identity' => false,
-      )),
-      'metaphone_title' => 
-      Colibri\Schema\Field::__set_state(array(
-         'column' => 'metaphone_title',
-         'name' => 'metaphone_title',
-         'type' => 
-        Colibri\Schema\Types\StringType::__set_state(array(
-           'length' => 255,
-           'precision' => 0,
-           'extra' => NULL,
-        )),
-         'default' => NULL,
-         'unsigned' => false,
-         'nullable' => false,
-         'autoIncrement' => false,
-         'primaryKey' => false,
-         'identity' => false,
-      )),
       'original_title' => 
       Colibri\Schema\Field::__set_state(array(
          'column' => 'original_title',
          'name' => 'original_title',
-         'type' => 
-        Colibri\Schema\Types\StringType::__set_state(array(
-           'length' => 255,
-           'precision' => 0,
-           'extra' => NULL,
-        )),
-         'default' => NULL,
-         'unsigned' => false,
-         'nullable' => false,
-         'autoIncrement' => false,
-         'primaryKey' => false,
-         'identity' => false,
-      )),
-      'soundex_original_title' => 
-      Colibri\Schema\Field::__set_state(array(
-         'column' => 'soundex_original_title',
-         'name' => 'soundex_original_title',
-         'type' => 
-        Colibri\Schema\Types\StringType::__set_state(array(
-           'length' => 255,
-           'precision' => 0,
-           'extra' => NULL,
-        )),
-         'default' => NULL,
-         'unsigned' => false,
-         'nullable' => false,
-         'autoIncrement' => false,
-         'primaryKey' => false,
-         'identity' => false,
-      )),
-      'metaphone_original_title' => 
-      Colibri\Schema\Field::__set_state(array(
-         'column' => 'metaphone_original_title',
-         'name' => 'metaphone_original_title',
          'type' => 
         Colibri\Schema\Types\StringType::__set_state(array(
            'length' => 255,
@@ -516,6 +477,1877 @@ return array (
         )),
          'default' => NULL,
          'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\MovieGenre' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\MovieGenre',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\MovieGenreRepository',
+    'tableName' => 'movie_genre',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'movie_genre.id',
+      'movie_id' => 'movie_genre.movie_id',
+      'genre_id' => 'movie_genre.genre_id',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'genre_id' => 'genre_id',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'genre_id' => 'genre_id',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'movie_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'movie_id',
+         'name' => 'movie_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'genre_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'genre_id',
+         'name' => 'genre_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\MovieCompany' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\MovieCompany',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\MovieCompanyRepository',
+    'tableName' => 'movie_company',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'movie_company.id',
+      'movie_id' => 'movie_company.movie_id',
+      'company_id' => 'movie_company.company_id',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'company_id' => 'company_id',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'company_id' => 'company_id',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'movie_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'movie_id',
+         'name' => 'movie_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'company_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'company_id',
+         'name' => 'company_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\MovieCountry' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\MovieCountry',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\MovieCountryRepository',
+    'tableName' => 'movie_country',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'movie_country.id',
+      'movie_id' => 'movie_country.movie_id',
+      'country_id' => 'movie_country.country_id',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'country_id' => 'country_id',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'country_id' => 'country_id',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'movie_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'movie_id',
+         'name' => 'movie_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'country_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'country_id',
+         'name' => 'country_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\MovieLanguage' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\MovieLanguage',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\MovieLanguageRepository',
+    'tableName' => 'movie_language',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'movie_language.id',
+      'movie_id' => 'movie_language.movie_id',
+      'language_id' => 'movie_language.language_id',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'language_id' => 'language_id',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'movie_id' => 'movie_id',
+      'language_id' => 'language_id',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'movie_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'movie_id',
+         'name' => 'movie_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'language_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'language_id',
+         'name' => 'language_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Collection' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Collection',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\CollectionRepository',
+    'tableName' => 'collections',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'collections.id',
+      'tmdb_id' => 'collections.tmdb_id',
+      'name' => 'collections.name',
+      'version' => 'collections.version',
+      'created' => 'collections.created',
+      'updated' => 'collections.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'name' => 'name',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'tmdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'tmdb_id',
+         'name' => 'tmdb_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'name' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'name',
+         'name' => 'name',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 255,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Company' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Company',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\CompanyRepository',
+    'tableName' => 'companies',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'companies.id',
+      'tmdb_id' => 'companies.tmdb_id',
+      'name' => 'companies.name',
+      'version' => 'companies.version',
+      'created' => 'companies.created',
+      'updated' => 'companies.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'name' => 'name',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'tmdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'tmdb_id',
+         'name' => 'tmdb_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'name' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'name',
+         'name' => 'name',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 255,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Country' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Country',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\CountryRepository',
+    'tableName' => 'countries',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'countries.id',
+      'iso_3166_1' => 'countries.iso_3166_1',
+      'name' => 'countries.name',
+      'version' => 'countries.version',
+      'created' => 'countries.created',
+      'updated' => 'countries.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'iso_3166_1' => 'iso_3166_1',
+      'name' => 'name',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'iso_3166_1' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'iso_3166_1',
+         'name' => 'iso_3166_1',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 2,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'name' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'name',
+         'name' => 'name',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 255,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Language' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Language',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\LanguageRepository',
+    'tableName' => 'languages',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'languages.id',
+      'iso_639_1' => 'languages.iso_639_1',
+      'name' => 'languages.name',
+      'version' => 'languages.version',
+      'created' => 'languages.created',
+      'updated' => 'languages.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'iso_639_1' => 'iso_639_1',
+      'name' => 'name',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'iso_639_1' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'iso_639_1',
+         'name' => 'iso_639_1',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 2,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'name' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'name',
+         'name' => 'name',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 255,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Genre' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Genre',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\GenreRepository',
+    'tableName' => 'genres',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'genres.id',
+      'tmdb_id' => 'genres.tmdb_id',
+      'name' => 'genres.name',
+      'version' => 'genres.version',
+      'created' => 'genres.created',
+      'updated' => 'genres.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'name' => 'name',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'tmdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'tmdb_id',
+         'name' => 'tmdb_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'name' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'name',
+         'name' => 'name',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 64,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Character' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Character',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\CharacterRepository',
+    'tableName' => 'characters',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'characters.id',
+      'profile_id' => 'characters.profile_id',
+      'movie_id' => 'characters.movie_id',
+      'character' => 'characters.character',
+      'version' => 'characters.version',
+      'created' => 'characters.created',
+      'updated' => 'characters.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'profile_id' => 'profile_id',
+      'movie_id' => 'movie_id',
+      'character' => 'character',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'profile_id' => 'profile_id',
+      'movie_id' => 'movie_id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'profile_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'profile_id',
+         'name' => 'profile_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'movie_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'movie_id',
+         'name' => 'movie_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'character' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'character',
+         'name' => 'character',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 64,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Crew' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Crew',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\CrewRepository',
+    'tableName' => 'crews',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'crews.id',
+      'profile_id' => 'crews.profile_id',
+      'movie_id' => 'crews.movie_id',
+      'department' => 'crews.department',
+      'job' => 'crews.job',
+      'version' => 'crews.version',
+      'created' => 'crews.created',
+      'updated' => 'crews.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'profile_id' => 'profile_id',
+      'movie_id' => 'movie_id',
+      'department' => 'department',
+      'job' => 'job',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'profile_id' => 'profile_id',
+      'movie_id' => 'movie_id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'profile_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'profile_id',
+         'name' => 'profile_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'movie_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'movie_id',
+         'name' => 'movie_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'department' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'department',
+         'name' => 'department',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 64,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'job' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'job',
+         'name' => 'job',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 64,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Profile' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Profile',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\ProfileRepository',
+    'tableName' => 'profiles',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'profiles.id',
+      'tmdb_id' => 'profiles.tmdb_id',
+      'imdb_id' => 'profiles.imdb_id',
+      'name' => 'profiles.name',
+      'biography' => 'profiles.biography',
+      'adult' => 'profiles.adult',
+      'sex' => 'profiles.sex',
+      'birthday' => 'profiles.birthday',
+      'deathday' => 'profiles.deathday',
+      'version' => 'profiles.version',
+      'created' => 'profiles.created',
+      'updated' => 'profiles.updated',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'imdb_id' => 'imdb_id',
+      'name' => 'name',
+      'biography' => 'biography',
+      'adult' => 'adult',
+      'sex' => 'sex',
+      'birthday' => 'birthday',
+      'deathday' => 'deathday',
+      'version' => 'version',
+      'created' => 'created',
+      'updated' => 'updated',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+      'sex' => 
+      array (
+        0 => 'F',
+        1 => 'M',
+      ),
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
+      'version' => 'version',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'tmdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'tmdb_id',
+         'name' => 'tmdb_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'imdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'imdb_id',
+         'name' => 'imdb_id',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 9,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'name' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'name',
+         'name' => 'name',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 64,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'biography' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'biography',
+         'name' => 'biography',
+         'type' => 
+        Colibri\Schema\Types\StringType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'adult' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'adult',
+         'name' => 'adult',
+         'type' => 
+        Colibri\Schema\Types\BooleanType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'sex' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'sex',
+         'name' => 'sex',
+         'type' => 
+        Colibri\Schema\Types\EnumType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => 
+          array (
+            0 => 'F',
+            1 => 'M',
+          ),
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'birthday' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'birthday',
+         'name' => 'birthday',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'deathday' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'deathday',
+         'name' => 'deathday',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'version' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'version',
+         'name' => 'version',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'created' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'created',
+         'name' => 'created',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'updated' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'updated',
+         'name' => 'updated',
+         'type' => 
+        Colibri\Schema\Types\DatetimeType::__set_state(array(
+           'length' => 0,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+    ),
+  ),
+  'ColibriLabs\\Database\\Om\\Photo' => 
+  array (
+    'entityClass' => 'ColibriLabs\\Database\\Om\\Photo',
+    'entityRepositoryClass' => 'ColibriLabs\\Database\\Om\\PhotoRepository',
+    'tableName' => 'photos',
+    'identifier' => 'id',
+    'rawSQLNames' => 
+    array (
+      'id' => 'photos.id',
+      'picture_id' => 'photos.picture_id',
+      'profile_id' => 'photos.profile_id',
+    ),
+    'names' => 
+    array (
+      'id' => 'id',
+      'picture_id' => 'picture_id',
+      'profile_id' => 'profile_id',
+    ),
+    'relations' => 
+    array (
+    ),
+    'enumerations' => 
+    array (
+    ),
+    'default' => 
+    array (
+    ),
+    'nullables' => 
+    array (
+    ),
+    'unsigned' => 
+    array (
+      'id' => 'id',
+      'picture_id' => 'picture_id',
+      'profile_id' => 'profile_id',
+    ),
+    'primary' => 
+    array (
+      'id' => 'id',
+    ),
+    'instances' => 
+    array (
+      'id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'id',
+         'name' => 'id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => true,
+         'primaryKey' => true,
+         'identity' => false,
+      )),
+      'picture_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'picture_id',
+         'name' => 'picture_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'profile_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'profile_id',
+         'name' => 'profile_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
          'nullable' => false,
          'autoIncrement' => false,
          'primaryKey' => false,

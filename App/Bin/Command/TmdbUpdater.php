@@ -2,11 +2,16 @@
 
 namespace ColibriLabs\Bin\Command;
 
+use Colibri\Common\DateTime;
 use Colibri\Parameters\ParametersCollection;
 
+use ColibriLabs\Bin\Lib\TmdbDataNormalizer;
+use ColibriLabs\Database\Om\CharacterRepository;
+use ColibriLabs\Database\Om\Movie;
+use ColibriLabs\Database\Om\MovieRepository;
+use ColibriLabs\Database\Om\ProfileRepository;
 use ColibriLabs\Lib\Util\Profiler;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
+
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,9 +19,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Tmdb\ApiToken;
 use Tmdb\Client;
-use Tmdb\Helper\ImageHelper;
-use Tmdb\Repository\ConfigurationRepository;
-use Tmdb\Repository\MovieRepository;
 
 /**
  * Class TmdbUpdater
@@ -31,54 +33,80 @@ class TmdbUpdater extends Command
   protected $config;
   
   /**
+   * @var Client
+   */
+  protected $client;
+  
+  /**
+   * @var TmdbDataNormalizer
+   */
+  protected $normalizer;
+  
+  /**
    * @inheritdoc
    */
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    $token = new ApiToken($this->config->path('tmdb_api.token'));
-    $client = new Client($token);
-
-    $configRepository = new ConfigurationRepository($client);
-    $helper = new ImageHelper($configRepository->load());
-    
-    $api = $client->getMoviesApi();
-  
-    $repository = new MovieRepository($client);
-    /** @var \Tmdb\Model\Movie $movie */
-
-    $filesystem = new Filesystem(new Local($this->config->path('tmdb_root')));
-    
     Profiler::timerStart();
+  
+    try {
+      $movieArray = $this->client->getMoviesApi()->getMovie(155);
+      $this->processMovie($movieArray);
+    } catch (\Exception $exception) {
+      $output->writeln($exception->getMessage());
+    }
+  
+    $output->writeln(sprintf('Finished! Time spend: %s', Profiler::timeSpendHumanize()));
+  }
+  
+  /**
+   * @param array $movieResponse
+   * @return Movie
+   */
+  protected function processMovie(array $movieResponse)
+  {
     
-    $until = 500000;
+    $repository = new MovieRepository();
     
-    for ($i = 1; $i < $until; $i++) {
-
-      try {
-        $movieData = [
-          'movie' => $api->getMovie($i),
-          'credits' => $api->getCredits($i),
-          'images' => $api->getImages($i),
-        ];
-        
-        $jsonFile = sprintf('movies/id_%d.json', $i);
-        
-        $filesystem->write($jsonFile, json_encode($movieData, JSON_PRETTY_PRINT));
-        
-        $output->writeln(sprintf('[ID%d] Left: %d', $i, $until - $i));
-      } catch (\Throwable $exception) {
-        $output->writeln($exception->getMessage());
+    if (!($movie = $repository->findOneByTmdbId($movieResponse['id']))) {
+      $data = $this->normalizer->normalizeMovie($movieResponse);
+  
+      $movie = new Movie();
+      $repository->hydrate($movie, $data);
+      $repository->persist($movie);
+    }
+    
+    $this->processCharacters($movie);
+    
+    return $movie;
+  }
+  
+  protected function processCharacters(Movie $movie)
+  {
+    $response = $this->client->getMoviesApi()->getCredits($movie->getTmdbId());
+    
+    if (isset($response['cast']) && count($response['cast']) > 0) {
+      foreach ($response['cast'] as $character) {
+        $this->processCharacter($character);
       }
     }
   }
   
-  /**
-   * @param $seconds
-   * @return string
-   */
-  private static function secondsToHumanize($seconds)
+  protected function processCharacter(array $characterArray)
   {
-    return sprintf('%dh %sm %ss', (integer) $seconds / 3600, (integer) (($seconds % 3600) / 60), (integer) ($seconds % 60));
+    $characterRepository = new CharacterRepository();
+    $profileRepository = new ProfileRepository();
+    
+    if (!($profile = $profileRepository->findOneByTmdbId($characterArray['id']))) {
+      
+    }
+    
+    $character = $characterRepository->filterByProfileId($profile->getId());
+  }
+  
+  protected function processProfile(array $characterArray)
+  {
+    
   }
   
   /**
@@ -98,6 +126,11 @@ class TmdbUpdater extends Command
     $configuration->handlePlaceholders();
     
     $this->config = $configuration;
+  
+    $token = new ApiToken($this->config->path('tmdb_api.token'));
+    $this->client = new Client($token);
+    
+    $this->normalizer = new TmdbDataNormalizer();
   }
   
   /**

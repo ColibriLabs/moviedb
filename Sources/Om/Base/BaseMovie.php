@@ -18,18 +18,16 @@ class BaseMovie extends Entity
   const TABLE = 'movies';
 
   const ID = 'movies.id';
+  const COLLECTION_ID = 'movies.collection_id';
   const TMDB_ID = 'movies.tmdb_id';
   const IMDB_ID = 'movies.imdb_id';
   const BUDGET = 'movies.budget';
   const REVENUE = 'movies.revenue';
   const RUNTIME = 'movies.runtime';
+  const ADULT = 'movies.adult';
   const RELEASE_DATE = 'movies.release_date';
   const TITLE = 'movies.title';
-  const SOUNDEX_TITLE = 'movies.soundex_title';
-  const METAPHONE_TITLE = 'movies.metaphone_title';
   const ORIGINAL_TITLE = 'movies.original_title';
-  const SOUNDEX_ORIGINAL_TITLE = 'movies.soundex_original_title';
-  const METAPHONE_ORIGINAL_TITLE = 'movies.metaphone_original_title';
   const ISO_LANGUAGE = 'movies.iso_language';
   const OVERVIEW = 'movies.overview';
   const TAGLINE = 'movies.tagline';
@@ -42,18 +40,16 @@ class BaseMovie extends Entity
   const CREATED = 'movies.created';
   const UPDATED = 'movies.updated';
   const ID_KEY = 'id';
+  const COLLECTION_ID_KEY = 'collection_id';
   const TMDB_ID_KEY = 'tmdb_id';
   const IMDB_ID_KEY = 'imdb_id';
   const BUDGET_KEY = 'budget';
   const REVENUE_KEY = 'revenue';
   const RUNTIME_KEY = 'runtime';
+  const ADULT_KEY = 'adult';
   const RELEASE_DATE_KEY = 'release_date';
   const TITLE_KEY = 'title';
-  const SOUNDEX_TITLE_KEY = 'soundex_title';
-  const METAPHONE_TITLE_KEY = 'metaphone_title';
   const ORIGINAL_TITLE_KEY = 'original_title';
-  const SOUNDEX_ORIGINAL_TITLE_KEY = 'soundex_original_title';
-  const METAPHONE_ORIGINAL_TITLE_KEY = 'metaphone_original_title';
   const ISO_LANGUAGE_KEY = 'iso_language';
   const OVERVIEW_KEY = 'overview';
   const TAGLINE_KEY = 'tagline';
@@ -75,6 +71,11 @@ class BaseMovie extends Entity
    * @var integer
    */
   public $id;
+  
+  /**
+   * @var integer
+   */
+  public $collectionId;
   
   /**
    * @var integer
@@ -102,6 +103,11 @@ class BaseMovie extends Entity
   public $runtime;
   
   /**
+   * @var boolean
+   */
+  public $adult;
+  
+  /**
    * @var string
    */
   public $releaseDate;
@@ -114,27 +120,7 @@ class BaseMovie extends Entity
   /**
    * @var string
    */
-  public $soundexTitle;
-  
-  /**
-   * @var string
-   */
-  public $metaphoneTitle;
-  
-  /**
-   * @var string
-   */
   public $originalTitle;
-  
-  /**
-   * @var string
-   */
-  public $soundexOriginalTitle;
-  
-  /**
-   * @var string
-   */
-  public $metaphoneOriginalTitle;
   
   /**
    * @var string
@@ -202,6 +188,14 @@ class BaseMovie extends Entity
   /**
    * @return integer
    */
+  public function getCollectionId()
+  {
+    return $this->collectionId;
+  }
+
+  /**
+   * @return integer
+   */
   public function getTmdbId()
   {
     return $this->tmdbId;
@@ -240,6 +234,14 @@ class BaseMovie extends Entity
   }
 
   /**
+   * @return boolean
+   */
+  public function getAdult()
+  {
+    return $this->adult;
+  }
+
+  /**
    * @return string
    */
   public function getReleaseDate()
@@ -258,41 +260,9 @@ class BaseMovie extends Entity
   /**
    * @return string
    */
-  public function getSoundexTitle()
-  {
-    return $this->soundexTitle;
-  }
-
-  /**
-   * @return string
-   */
-  public function getMetaphoneTitle()
-  {
-    return $this->metaphoneTitle;
-  }
-
-  /**
-   * @return string
-   */
   public function getOriginalTitle()
   {
     return $this->originalTitle;
-  }
-
-  /**
-   * @return string
-   */
-  public function getSoundexOriginalTitle()
-  {
-    return $this->soundexOriginalTitle;
-  }
-
-  /**
-   * @return string
-   */
-  public function getMetaphoneOriginalTitle()
-  {
-    return $this->metaphoneOriginalTitle;
   }
 
   /**
@@ -396,6 +366,17 @@ class BaseMovie extends Entity
   }
 
   /**
+   * @param integer $collectionId
+   * @return $this
+   */
+  public function setCollectionId($collectionId)
+  {
+    $this->collectionId = $collectionId;
+
+    return $this;
+  }
+
+  /**
    * @param integer $tmdbId
    * @return $this
    */
@@ -451,6 +432,17 @@ class BaseMovie extends Entity
   }
 
   /**
+   * @param boolean $adult
+   * @return $this
+   */
+  public function setAdult($adult)
+  {
+    $this->adult = $adult;
+
+    return $this;
+  }
+
+  /**
    * @param string $releaseDate
    * @return $this
    */
@@ -473,56 +465,12 @@ class BaseMovie extends Entity
   }
 
   /**
-   * @param string $soundexTitle
-   * @return $this
-   */
-  public function setSoundexTitle($soundexTitle)
-  {
-    $this->soundexTitle = $soundexTitle;
-
-    return $this;
-  }
-
-  /**
-   * @param string $metaphoneTitle
-   * @return $this
-   */
-  public function setMetaphoneTitle($metaphoneTitle)
-  {
-    $this->metaphoneTitle = $metaphoneTitle;
-
-    return $this;
-  }
-
-  /**
    * @param string $originalTitle
    * @return $this
    */
   public function setOriginalTitle($originalTitle)
   {
     $this->originalTitle = $originalTitle;
-
-    return $this;
-  }
-
-  /**
-   * @param string $soundexOriginalTitle
-   * @return $this
-   */
-  public function setSoundexOriginalTitle($soundexOriginalTitle)
-  {
-    $this->soundexOriginalTitle = $soundexOriginalTitle;
-
-    return $this;
-  }
-
-  /**
-   * @param string $metaphoneOriginalTitle
-   * @return $this
-   */
-  public function setMetaphoneOriginalTitle($metaphoneOriginalTitle)
-  {
-    $this->metaphoneOriginalTitle = $metaphoneOriginalTitle;
 
     return $this;
   }
