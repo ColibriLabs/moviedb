@@ -30,10 +30,24 @@ return [
       \ColibriLabs\Database\Om\Movie::class => [
         'created' => ['on' => ['create']],
         'updated' => ['on' => ['update', 'create']]
+      ],
+      \ColibriLabs\Database\Om\Character::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']]
+      ],
+      \ColibriLabs\Database\Om\Profile::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']]
       ]
     ],
     'versionable' => [
       \ColibriLabs\Database\Om\Movie::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Character::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Profile::class => [
         'properties' => ['version']
       ]
     ]

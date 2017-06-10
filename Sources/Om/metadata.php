@@ -1631,9 +1631,11 @@ return array (
     'rawSQLNames' => 
     array (
       'id' => 'characters.id',
+      'tmdb_id' => 'characters.tmdb_id',
       'profile_id' => 'characters.profile_id',
       'movie_id' => 'characters.movie_id',
       'character' => 'characters.character',
+      'order' => 'characters.order',
       'version' => 'characters.version',
       'created' => 'characters.created',
       'updated' => 'characters.updated',
@@ -1641,9 +1643,11 @@ return array (
     'names' => 
     array (
       'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
       'profile_id' => 'profile_id',
       'movie_id' => 'movie_id',
       'character' => 'character',
+      'order' => 'order',
       'version' => 'version',
       'created' => 'created',
       'updated' => 'updated',
@@ -1663,8 +1667,10 @@ return array (
     'unsigned' => 
     array (
       'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
       'profile_id' => 'profile_id',
       'movie_id' => 'movie_id',
+      'order' => 'order',
       'version' => 'version',
     ),
     'primary' => 
@@ -1688,6 +1694,23 @@ return array (
          'nullable' => false,
          'autoIncrement' => true,
          'primaryKey' => true,
+         'identity' => false,
+      )),
+      'tmdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'tmdb_id',
+         'name' => 'tmdb_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
          'identity' => false,
       )),
       'profile_id' => 
@@ -1736,6 +1759,23 @@ return array (
         )),
          'default' => NULL,
          'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'order' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'order',
+         'name' => 'order',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 3,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
          'nullable' => false,
          'autoIncrement' => false,
          'primaryKey' => false,
@@ -1803,10 +1843,12 @@ return array (
     'rawSQLNames' => 
     array (
       'id' => 'crews.id',
+      'tmdb_id' => 'crews.tmdb_id',
       'profile_id' => 'crews.profile_id',
       'movie_id' => 'crews.movie_id',
       'department' => 'crews.department',
       'job' => 'crews.job',
+      'order' => 'crews.order',
       'version' => 'crews.version',
       'created' => 'crews.created',
       'updated' => 'crews.updated',
@@ -1814,10 +1856,12 @@ return array (
     'names' => 
     array (
       'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
       'profile_id' => 'profile_id',
       'movie_id' => 'movie_id',
       'department' => 'department',
       'job' => 'job',
+      'order' => 'order',
       'version' => 'version',
       'created' => 'created',
       'updated' => 'updated',
@@ -1837,8 +1881,10 @@ return array (
     'unsigned' => 
     array (
       'id' => 'id',
+      'tmdb_id' => 'tmdb_id',
       'profile_id' => 'profile_id',
       'movie_id' => 'movie_id',
+      'order' => 'order',
       'version' => 'version',
     ),
     'primary' => 
@@ -1862,6 +1908,23 @@ return array (
          'nullable' => false,
          'autoIncrement' => true,
          'primaryKey' => true,
+         'identity' => false,
+      )),
+      'tmdb_id' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'tmdb_id',
+         'name' => 'tmdb_id',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
          'identity' => false,
       )),
       'profile_id' => 
@@ -1927,6 +1990,23 @@ return array (
         )),
          'default' => NULL,
          'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'order' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'order',
+         'name' => 'order',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 3,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
          'nullable' => false,
          'autoIncrement' => false,
          'primaryKey' => false,

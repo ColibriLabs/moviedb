@@ -18,16 +18,20 @@ class BaseCharacter extends Entity
   const TABLE = 'characters';
 
   const ID = 'characters.id';
+  const TMDB_ID = 'characters.tmdb_id';
   const PROFILE_ID = 'characters.profile_id';
   const MOVIE_ID = 'characters.movie_id';
   const CHARACTER = 'characters.character';
+  const ORDER = 'characters.order';
   const VERSION = 'characters.version';
   const CREATED = 'characters.created';
   const UPDATED = 'characters.updated';
   const ID_KEY = 'id';
+  const TMDB_ID_KEY = 'tmdb_id';
   const PROFILE_ID_KEY = 'profile_id';
   const MOVIE_ID_KEY = 'movie_id';
   const CHARACTER_KEY = 'character';
+  const ORDER_KEY = 'order';
   const VERSION_KEY = 'version';
   const CREATED_KEY = 'created';
   const UPDATED_KEY = 'updated';
@@ -36,6 +40,11 @@ class BaseCharacter extends Entity
    * @var integer
    */
   public $id;
+  
+  /**
+   * @var integer
+   */
+  public $tmdbId;
   
   /**
    * @var integer
@@ -51,6 +60,11 @@ class BaseCharacter extends Entity
    * @var string
    */
   public $character;
+  
+  /**
+   * @var integer
+   */
+  public $order;
   
   /**
    * @var integer
@@ -78,6 +92,14 @@ class BaseCharacter extends Entity
   /**
    * @return integer
    */
+  public function getTmdbId()
+  {
+    return $this->tmdbId;
+  }
+
+  /**
+   * @return integer
+   */
   public function getProfileId()
   {
     return $this->profileId;
@@ -97,6 +119,14 @@ class BaseCharacter extends Entity
   public function getCharacter()
   {
     return $this->character;
+  }
+
+  /**
+   * @return integer
+   */
+  public function getOrder()
+  {
+    return $this->order;
   }
 
   /**
@@ -136,6 +166,17 @@ class BaseCharacter extends Entity
   }
 
   /**
+   * @param integer $tmdbId
+   * @return $this
+   */
+  public function setTmdbId($tmdbId)
+  {
+    $this->tmdbId = $tmdbId;
+
+    return $this;
+  }
+
+  /**
    * @param integer $profileId
    * @return $this
    */
@@ -164,6 +205,17 @@ class BaseCharacter extends Entity
   public function setCharacter($character)
   {
     $this->character = $character;
+
+    return $this;
+  }
+
+  /**
+   * @param integer $order
+   * @return $this
+   */
+  public function setOrder($order)
+  {
+    $this->order = $order;
 
     return $this;
   }

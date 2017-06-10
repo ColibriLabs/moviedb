@@ -98,9 +98,11 @@
 
   <table table="characters" name="character">
     <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
     <column column="profile_id" type="integer" length="11" unsigned="true"/>
     <column column="movie_id" type="integer" length="11" unsigned="true"/>
     <column column="character" type="string" length="64"/>
+    <column column="order" type="integer" length="3" unsigned="true"/>
     <column column="version" type="integer" length="11" unsigned="true"/>
     <column column="created" type="datetime"/>
     <column column="updated" type="datetime"/>
@@ -108,10 +110,12 @@
 
   <table table="crews" name="crew">
     <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
     <column column="profile_id" type="integer" length="11" unsigned="true"/>
     <column column="movie_id" type="integer" length="11" unsigned="true"/>
     <column column="department" type="string" length="64"/>
     <column column="job" type="string" length="64"/>
+    <column column="order" type="integer" length="3" unsigned="true"/>
     <column column="version" type="integer" length="11" unsigned="true"/>
     <column column="created" type="datetime"/>
     <column column="updated" type="datetime"/>

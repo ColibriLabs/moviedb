@@ -2,13 +2,24 @@
 
 namespace ColibriLabs\Bin\Command;
 
+use Colibri\ColibriORM;
 use Colibri\Common\DateTime;
+use Colibri\Exception\BadCallMethodException;
 use Colibri\Parameters\ParametersCollection;
 
+use Colibri\ServiceContainer\ServiceLocator;
 use ColibriLabs\Bin\Lib\TmdbDataNormalizer;
+use ColibriLabs\Database\Om\Character;
 use ColibriLabs\Database\Om\CharacterRepository;
+use ColibriLabs\Database\Om\Crew;
+use ColibriLabs\Database\Om\CrewRepository;
 use ColibriLabs\Database\Om\Movie;
 use ColibriLabs\Database\Om\MovieRepository;
+use ColibriLabs\Database\Om\Photo;
+use ColibriLabs\Database\Om\PhotoRepository;
+use ColibriLabs\Database\Om\Picture;
+use ColibriLabs\Database\Om\PictureRepository;
+use ColibriLabs\Database\Om\Profile;
 use ColibriLabs\Database\Om\ProfileRepository;
 use ColibriLabs\Lib\Util\Profiler;
 
@@ -17,6 +28,8 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Tmdb\Api\Movies;
+use Tmdb\Api\People;
 use Tmdb\ApiToken;
 use Tmdb\Client;
 
@@ -33,9 +46,19 @@ class TmdbUpdater extends Command
   protected $config;
   
   /**
-   * @var Client
+   * @var ServiceLocator
    */
-  protected $client;
+  protected $colibri;
+  
+  /**
+   * @var Movies
+   */
+  protected $moviesApi;
+  
+  /**
+   * @var People
+   */
+  protected $peopleApi;
   
   /**
    * @var TmdbDataNormalizer
@@ -48,14 +71,17 @@ class TmdbUpdater extends Command
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     Profiler::timerStart();
-  
+    
+    $this->colibri->getConnection()->start();
+    
     try {
-      $movieArray = $this->client->getMoviesApi()->getMovie(155);
+      $movieArray = $this->moviesApi->getMovie(153);
       $this->processMovie($movieArray);
+      $this->colibri->getConnection()->commit();
     } catch (\Exception $exception) {
-      $output->writeln($exception->getMessage());
+      $output->writeln(sprintf("%s\n%s", $exception->getMessage(), $exception->getTraceAsString()));
     }
-  
+    
     $output->writeln(sprintf('Finished! Time spend: %s', Profiler::timeSpendHumanize()));
   }
   
@@ -76,37 +102,196 @@ class TmdbUpdater extends Command
       $repository->persist($movie);
     }
     
-    $this->processCharacters($movie);
+//    $this->processCharacters($movie);
+    $this->processCrews($movie);
     
     return $movie;
   }
-  
-  protected function processCharacters(Movie $movie)
+
+  /**
+   * @param Movie $movie
+   */
+  protected function processCrews(Movie $movie)
   {
-    $response = $this->client->getMoviesApi()->getCredits($movie->getTmdbId());
-    
-    if (isset($response['cast']) && count($response['cast']) > 0) {
-      foreach ($response['cast'] as $character) {
-        $this->processCharacter($character);
+    $response = $this->moviesApi->getCredits($movie->getTmdbId());
+
+    if (isset($response['crew']) && count($response['crew']) > 0) {
+      foreach ($response['crew'] as $crewItem) {
+        $this->processOneCrewPerson($crewItem, $movie);
       }
     }
   }
-  
-  protected function processCharacter(array $characterArray)
+
+  /**
+   * @param Movie $movie
+   */
+  protected function processCharacters(Movie $movie)
   {
-    $characterRepository = new CharacterRepository();
-    $profileRepository = new ProfileRepository();
+    $response = $this->moviesApi->getCredits($movie->getTmdbId());
     
-    if (!($profile = $profileRepository->findOneByTmdbId($characterArray['id']))) {
-      
+    if (isset($response['cast']) && count($response['cast']) > 0) {
+      foreach ($response['cast'] as $character) {
+        $this->processOneCharacter($character, $movie);
+      }
+    }
+  }
+
+  /**
+   * @param array $response
+   * @param Movie $movie
+   * @throws \Colibri\Exception\NotSupportedException
+   */
+  protected function processOneCrewPerson(array $response, Movie $movie)
+  {
+    $repository = new CrewRepository();
+
+    $profile = $this->processProfile($response);
+
+    $crewPerson = $repository
+      ->filterByProfileId($profile->getId())
+      ->filterByMovieId($movie->getId())
+      ->findOne(null);
+
+    if (!$crewPerson instanceof Crew) {
+      $response = $this->normalizer->normalizeCrewPerson($response);
+      $crewPerson = new Crew();
+      $crewPerson->setProfileId($profile->getId())->setMovieId($movie->getId());
+      $repository->hydrate($crewPerson, $response);
+      $repository->persist($crewPerson);
+    }
+  }
+
+  /**
+   * @param array $response
+   * @param Movie $movie
+   * @throws \Colibri\Exception\NotSupportedException
+   */
+  protected function processOneCharacter(array $response, Movie $movie)
+  {
+    $characters = new CharacterRepository();
+
+    $profile = $this->processProfile($response);
+
+    $character = $characters
+      ->filterByProfileId($profile->getId())
+      ->filterByMovieId($movie->getId())
+      ->findOne(null);
+    
+    if (!$character instanceof Character) {
+      $response = $this->normalizer->normalizeCharacter($response);
+      $character = new Character();
+      $character->setProfileId($profile->getId())->setMovieId($movie->getId());
+      $characters->hydrate($character, $response);
+      $characters->persist($character);
+    }
+  }
+
+  /**
+   * @param array $response
+   * @return Profile
+   * @throws \Colibri\Exception\NotSupportedException
+   */
+  protected function processProfile(array $response)
+  {
+    $profiles = new ProfileRepository();
+
+    if (!($profile = $profiles->findOneByTmdbId($response['id']))) {
+
+      $profileData = $this->peopleApi->getPerson($response['id']);
+      $photosData = $this->peopleApi->getImages($response['id']);
+
+      $dict = [];
+
+      foreach($photosData['profiles'] as $item) {
+        if (isset($dict[$item['file_path']])) {
+          var_dump($photosData); die;
+        }
+        $dict[$item['file_path']] = 1;
+      }
+
+      $profile = new Profile();
+      $profileData = $this->normalizer->normalizeProfile($profileData);
+      $profiles->hydrate($profile, $profileData)->persist($profile);
+
+      $this->processProfilePhotos($photosData, $profile);
+    }
+
+    return $profile;
+  }
+
+  /**
+   * @param array $response
+   * @param Profile $profile
+   * @throws BadCallMethodException
+   * @throws \Colibri\Exception\NotSupportedException
+   */
+  protected function processProfilePhotos(array $response, Profile $profile)
+  {
+    $repository = new PhotoRepository();
+    $pictures = new PictureRepository();
+
+    if (isset($response['profiles']) && count($response['profiles']) > 0) {
+      foreach ($response['profiles'] as $pictureData) {
+        $picture = $this->processPicture($pictureData, $pictures);
+        
+        $photo = new Photo();
+        $photo->setProfileId($profile->getId())->setPictureId($picture->getId());
+        
+        $repository->persist($photo);
+      }
+    }
+  }
+
+  /**
+   * @param array $response
+   * @param PictureRepository $repository
+   * @return Picture
+   * @throws BadCallMethodException
+   */
+  protected function processPicture(array $response, PictureRepository $repository)
+  {
+    $picture = new Picture();
+    $response = $this->normalizer->normalizePicture($response);
+
+    $connection = $this->colibri->getConnection();
+
+    $datetime = new DateTime();
+    $datetime->setFormat('Y-m-d H:i:s');
+
+    $response['created'] = $datetime;
+    $response['updated'] = $datetime;
+    $response['version'] = 1;
+    
+    try {
+      $persister = $repository->getPersisterForEntity($picture);
+
+      $persister->ignore();
+      $persister->setDataBatch($response);
+
+      $connection->execute($persister);
+
+      $repository->hydrate($picture, $response);
+
+      if (1 > ($lastId = $connection->lastInsertId())) {
+        return $this->retrievePicture($response);
+      }
+
+      $picture->setId($lastId);
+
+    } catch (\Throwable $e) {
+      throw new BadCallMethodException(sprintf('[%s] %s', get_class($e), $e->getMessage()));
     }
     
-    $character = $characterRepository->filterByProfileId($profile->getId());
+    return $picture;
   }
-  
-  protected function processProfile(array $characterArray)
+
+  /**
+   * @param array $response
+   * @return Picture
+   */
+  protected function retrievePicture(array $response)
   {
-    
+    return (new PictureRepository())->findOneByTmdbFilePath($response['tmdb_file_path']);
   }
   
   /**
@@ -128,9 +313,14 @@ class TmdbUpdater extends Command
     $this->config = $configuration;
   
     $token = new ApiToken($this->config->path('tmdb_api.token'));
-    $this->client = new Client($token);
+    $client = new Client($token);
+    
+    $this->moviesApi = $client->getMoviesApi();
+    $this->peopleApi = $client->getPeopleApi();
     
     $this->normalizer = new TmdbDataNormalizer();
+    
+    $this->colibri = ColibriORM::getServiceContainer();
   }
   
   /**

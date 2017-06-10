@@ -18,18 +18,22 @@ class BaseCrew extends Entity
   const TABLE = 'crews';
 
   const ID = 'crews.id';
+  const TMDB_ID = 'crews.tmdb_id';
   const PROFILE_ID = 'crews.profile_id';
   const MOVIE_ID = 'crews.movie_id';
   const DEPARTMENT = 'crews.department';
   const JOB = 'crews.job';
+  const ORDER = 'crews.order';
   const VERSION = 'crews.version';
   const CREATED = 'crews.created';
   const UPDATED = 'crews.updated';
   const ID_KEY = 'id';
+  const TMDB_ID_KEY = 'tmdb_id';
   const PROFILE_ID_KEY = 'profile_id';
   const MOVIE_ID_KEY = 'movie_id';
   const DEPARTMENT_KEY = 'department';
   const JOB_KEY = 'job';
+  const ORDER_KEY = 'order';
   const VERSION_KEY = 'version';
   const CREATED_KEY = 'created';
   const UPDATED_KEY = 'updated';
@@ -38,6 +42,11 @@ class BaseCrew extends Entity
    * @var integer
    */
   public $id;
+  
+  /**
+   * @var integer
+   */
+  public $tmdbId;
   
   /**
    * @var integer
@@ -62,6 +71,11 @@ class BaseCrew extends Entity
   /**
    * @var integer
    */
+  public $order;
+  
+  /**
+   * @var integer
+   */
   public $version;
   
   /**
@@ -80,6 +94,14 @@ class BaseCrew extends Entity
   public function getId()
   {
     return $this->id;
+  }
+
+  /**
+   * @return integer
+   */
+  public function getTmdbId()
+  {
+    return $this->tmdbId;
   }
 
   /**
@@ -117,6 +139,14 @@ class BaseCrew extends Entity
   /**
    * @return integer
    */
+  public function getOrder()
+  {
+    return $this->order;
+  }
+
+  /**
+   * @return integer
+   */
   public function getVersion()
   {
     return $this->version;
@@ -146,6 +176,17 @@ class BaseCrew extends Entity
   public function setId($id)
   {
     $this->id = $id;
+
+    return $this;
+  }
+
+  /**
+   * @param integer $tmdbId
+   * @return $this
+   */
+  public function setTmdbId($tmdbId)
+  {
+    $this->tmdbId = $tmdbId;
 
     return $this;
   }
@@ -190,6 +231,17 @@ class BaseCrew extends Entity
   public function setJob($job)
   {
     $this->job = $job;
+
+    return $this;
+  }
+
+  /**
+   * @param integer $order
+   * @return $this
+   */
+  public function setOrder($order)
+  {
+    $this->order = $order;
 
     return $this;
   }
