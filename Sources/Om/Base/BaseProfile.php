@@ -41,8 +41,6 @@ class BaseProfile extends Entity
   const VERSION_KEY = 'version';
   const CREATED_KEY = 'created';
   const UPDATED_KEY = 'updated';
-  const ENUM_SEX_F = 'F';
-  const ENUM_SEX_M = 'M';
   
   /**
    * @var integer
@@ -75,7 +73,7 @@ class BaseProfile extends Entity
   public $adult;
   
   /**
-   * @var string
+   * @var integer
    */
   public $sex;
   
@@ -153,7 +151,7 @@ class BaseProfile extends Entity
   }
 
   /**
-   * @return string
+   * @return integer
    */
   public function getSex()
   {
@@ -268,7 +266,7 @@ class BaseProfile extends Entity
   }
 
   /**
-   * @param string $sex
+   * @param integer $sex
    * @return $this
    */
   public function setSex($sex)

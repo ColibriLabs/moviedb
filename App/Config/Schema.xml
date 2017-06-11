@@ -60,6 +60,18 @@
     <column column="updated" type="datetime"/>
   </table>
 
+  <table table="collection_posters" name="collection_poster">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="picture_id" type="integer" length="11" unsigned="true"/>
+    <column column="collection_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
+  <table table="collection_backdrops" name="collection_backdrop">
+    <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
+    <column column="picture_id" type="integer" length="11" unsigned="true"/>
+    <column column="collection_id" type="integer" length="11" unsigned="true"/>
+  </table>
+
   <table table="companies" name="company">
     <column column="id" type="integer" length="11" unsigned="true" autoIncrement="true" primaryKey="true"/>
     <column column="tmdb_id" type="integer" length="11" unsigned="true"/>
@@ -128,7 +140,7 @@
     <column column="name" type="string" length="64" />
     <column column="biography" type="text" />
     <column column="adult" type="boolean"/>
-    <column column="sex" type="enum" enum="F,M" />
+    <column column="sex" type="integer" length="1" unsigned="true" />
     <column column="birthday" type="datetime"/>
     <column column="deathday" type="datetime"/>
     <column column="version" type="integer" length="11" unsigned="true"/>

@@ -2,8 +2,6 @@
 
 namespace ColibriLabs\Bin\Lib;
 
-use ColibriLabs\Database\Om\Profile;
-
 /**
  * Class TmdbDataNormalizer
  * @package ColibriLabs\Bin\Lib
@@ -85,6 +83,34 @@ class TmdbDataNormalizer
     
     return $this->reformatKeys($keys, $data);
   }
+
+  /**
+   * @param array $data
+   * @return array
+   */
+  public function normalizeGenre(array $data)
+  {
+    $keys = [
+      'id' => 'tmdb_id',
+      'name' => 'name',
+    ];
+
+    return $this->reformatKeys($keys, $data);
+  }
+
+  /**
+   * @param array $data
+   * @return array
+   */
+  public function normalizeCollection(array $data)
+  {
+    $keys = [
+      'id' => 'tmdb_id',
+      'name' => 'name',
+    ];
+
+    return $this->reformatKeys($keys, $data);
+  }
   
   /**
    * @param array $data
@@ -92,14 +118,6 @@ class TmdbDataNormalizer
    */
   public function normalizeProfile(array $data)
   {
-    /**
-     * @param $gender
-     * @return string
-     */
-    $detectSex = function ($gender) {
-      return (integer) $gender === 1 ? Profile::ENUM_SEX_F : Profile::ENUM_SEX_M;
-    };
-
     $keys = [
       'id' => 'tmdb_id',
       'imdb_id' => 'imdb_id',
@@ -108,7 +126,7 @@ class TmdbDataNormalizer
       'biography' => 'biography',
       'birthday' => 'birthday',
       'deathday' => 'deathday',
-      'sex' => $detectSex($data['gender']),
+      'gender' => 'sex',
     ];
     
     return $this->reformatKeys($keys, $data);

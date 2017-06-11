@@ -38,6 +38,30 @@ return [
       \ColibriLabs\Database\Om\Profile::class => [
         'created' => ['on' => ['create']],
         'updated' => ['on' => ['update', 'create']]
+      ],
+      \ColibriLabs\Database\Om\Genre::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']]
+      ],
+      \ColibriLabs\Database\Om\Language::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']],
+      ],
+      \ColibriLabs\Database\Om\Collection::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']],
+      ],
+      \ColibriLabs\Database\Om\Crew::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']],
+      ],
+      \ColibriLabs\Database\Om\Country::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']],
+      ],
+      \ColibriLabs\Database\Om\Company::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']],
       ]
     ],
     'versionable' => [
@@ -48,6 +72,24 @@ return [
         'properties' => ['version']
       ],
       \ColibriLabs\Database\Om\Profile::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Genre::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Language::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Collection::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Crew::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Country::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Company::class => [
         'properties' => ['version']
       ]
     ]

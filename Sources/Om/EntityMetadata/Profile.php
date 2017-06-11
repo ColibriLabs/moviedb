@@ -40,11 +40,6 @@ return array (
   ),
   'enumerations' => 
   array (
-    'sex' => 
-    array (
-      0 => 'F',
-      1 => 'M',
-    ),
   ),
   'default' => 
   array (
@@ -56,6 +51,7 @@ return array (
   array (
     'id' => 'id',
     'tmdb_id' => 'tmdb_id',
+    'sex' => 'sex',
     'version' => 'version',
   ),
   'primary' => 
@@ -171,17 +167,13 @@ return array (
        'column' => 'sex',
        'name' => 'sex',
        'type' => 
-      Colibri\Schema\Types\EnumType::__set_state(array(
-         'length' => 0,
+      Colibri\Schema\Types\IntegerType::__set_state(array(
+         'length' => 1,
          'precision' => 0,
-         'extra' => 
-        array (
-          0 => 'F',
-          1 => 'M',
-        ),
+         'extra' => NULL,
       )),
        'default' => NULL,
-       'unsigned' => false,
+       'unsigned' => true,
        'nullable' => false,
        'autoIncrement' => false,
        'primaryKey' => false,

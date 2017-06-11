@@ -1,6 +1,8 @@
 *~
 vendor
 App/Config/OrmDevelopment.php
+App/Config/ConfigDevelopment.php
 node_modules/
 Resources/tmdb/*
 data/*
+Resources/requests.log
