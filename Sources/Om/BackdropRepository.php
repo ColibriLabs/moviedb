@@ -7,7 +7,11 @@
 
 namespace ColibriLabs\Database\Om;
 
+/**
+ * Class BackdropRepository
+ * @package ColibriLabs\Database\Om
+ */
 class BackdropRepository extends Base\BaseBackdropRepository
 {
-  // ... write your custom code here
+  
 }

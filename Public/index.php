@@ -1,8 +1,8 @@
 <?php
 
-use ColibriLabs\MoviesDbApplication;
+use ColibriLabs\QiwiTvApplication;
 
 include_once __DIR__ . '/../vendor/autoload.php';
-include_once __DIR__ . '/../Sources/MoviesDbApplication.php';
+include_once __DIR__ . '/../Sources/QiwiTvApplication.php';
 
-(new MoviesDbApplication())->run();
+(new QiwiTvApplication())->run();

@@ -31,40 +31,7 @@ class IndexController extends ControllerWeb
   
   public function indexAction()
   {
-    $this->response->setBodyFormat(Response::RESPONSE_API_JSON);
-    
-    return ['movie' => new Movie()];
-  }
-  
-  public function tmdbParserAction()
-  {
-    return exec(sprintf('ls -la %s/movies | wc -l', $this->config->path('tmdb_root')));
-  }
-  
-  public function tmdbApiAction()
-  {
-    $this->response->setBodyFormat(Response::RESPONSE_JSON);
-    
-    $token = new ApiToken($this->config->path('tmdb_api.token'));
-    $client = new Client($token);
-    
-//    $configRepository = new ConfigurationRepository($client);
-//    $helper = new ImageHelper($configRepository->load());
-    
-//    $repository = new TmdbMovieRepository($client);
-//    /** @var \Tmdb\Model\Movie $movie */
-//    $movie = $repository->load(155);
-    
-//    var_dump($client->getCreditsApi()->getCredit('52fe4220c3a36847f8005d17'));
-    
-    var_dump(
-//      $client->getCollectionsApi()->getCollection(263),
-//      $client->getPeopleApi()->getPerson(1579),
-      $client->getMoviesApi()->getMovie(155)
-//      $client->getCreditsApi()->getCredit('52fe4220c3a36847f8005cf9')
-    ); die;
-      
-    return $client->getSearchApi()->searchMovies('Bee Movie');
+
   }
     
 }

@@ -7,9 +7,59 @@
 
 namespace ColibriLabs\Database\Om;
 
+use Behat\Transliterator\Transliterator;
+
+/**
+ * Class Movie
+ * @package ColibriLabs\Database\Om
+ */
 class Movie extends Base\BaseMovie
 {
   
+  /**
+   * @return string
+   */
+  public function getTitleSlug()
+  {
+    return Transliterator::urlize(Transliterator::utf8ToAscii($this->getTitle()));
+  }
   
+  /**
+   * @return Picture
+   */
+  public function getPoster()
+  {
+    return $this->virtual->get('poster', new Picture());
+  }
+  
+  /**
+   * @param Picture $poster
+   * @return $this
+   */
+  public function setPoster(Picture $poster)
+  {
+    $this->virtual->offsetSet('poster', $poster);
+    
+    return $this;
+  }
+  
+  /**
+   * @return Picture
+   */
+  public function getBackdrop()
+  {
+    return $this->virtual->get('backdrop', new Picture());
+  }
+  
+  /**
+   * @param Picture $backdrop
+   * @return $this
+   */
+  public function setBackdrop(Picture $backdrop)
+  {
+    $this->virtual->offsetSet('backdrop', $backdrop);
+    
+    return $this;
+  }
   
 }

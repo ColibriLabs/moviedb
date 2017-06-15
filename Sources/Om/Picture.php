@@ -7,7 +7,19 @@
 
 namespace ColibriLabs\Database\Om;
 
+/**
+ * Class Picture
+ * @package ColibriLabs\Database\Om
+ */
 class Picture extends Base\BasePicture
 {
-  // ... write your custom code here
+  
+  /**
+   * @return string
+   */
+  public function getTmdbPicturePath()
+  {
+    return sprintf('https://image.tmdb.org/t/p/original%s', $this->getTmdbFilePath());
+  }
+  
 }

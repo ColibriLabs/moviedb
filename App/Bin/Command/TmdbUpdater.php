@@ -225,8 +225,10 @@ class TmdbUpdater extends Command
   protected function processCountries(array $response, Movie $movie)
   {
     $repository = new CountryRepository();
+    $relationRepository = new MovieCountryRepository();
 
     foreach ($response as $countryData) {
+
       if (!($country = $repository->findOneBy([Country::ISO_3166_1, $countryData['iso_3166_1']]))) {
 
         $country = new Country();
@@ -234,22 +236,24 @@ class TmdbUpdater extends Command
         $country->setName($countryData['name']);
 
         $repository->persist($country);
-
-        $relation = new MovieCountry();
-        (new MovieCountryRepository())
-          ->hydrate($relation, [
-            'movie_id' => $movie->getId(),
-            'country_id' => $country->getId()
-          ])->persist($relation);
       }
+
+      $relation = new MovieCountry();
+      $relationRepository
+        ->hydrate($relation, [
+          'movie_id' => $movie->getId(),
+          'country_id' => $country->getId()
+        ])->persist($relation);
     }
   }
 
   protected function processCompanies(array $response, Movie $movie)
   {
-    $repository = new CompanyRepository();
+    $repository         = new CompanyRepository();
+    $relationRepository = new MovieCompanyRepository();
 
     foreach ($response as $companyData) {
+
       if (!($company = $repository->findOneByTmdbId($companyData['id']))) {
 
         $company = new Company();
@@ -257,14 +261,14 @@ class TmdbUpdater extends Command
         $company->setName($companyData['name']);
 
         $repository->persist($company);
-
-        $relation = new MovieCompany();
-        (new MovieCompanyRepository())
-          ->hydrate($relation, [
-            'movie_id' => $movie->getId(),
-            'company_id' => $company->getId()
-          ])->persist($relation);
       }
+
+      $relation = new MovieCompany();
+      $relationRepository
+        ->hydrate($relation, [
+          'movie_id' => $movie->getId(),
+          'company_id' => $company->getId()
+        ])->persist($relation);
     }
   }
 
@@ -326,7 +330,8 @@ class TmdbUpdater extends Command
    */
   protected function processSpokenLang(array $response, Movie $movie)
   {
-    $repository = new LanguageRepository();
+    $repository         = new LanguageRepository();
+    $relationRepository = new MovieLanguageRepository();
 
     foreach ($response as $languageData) {
       if (!($language = $repository->findOneBy([Language::ISO_639_1, $languageData['iso_639_1']]))) {
@@ -336,14 +341,13 @@ class TmdbUpdater extends Command
         $language->setName($languageData['name']);
 
         $repository->persist($language);
-
-        $relation = new MovieLanguage();
-        (new MovieLanguageRepository())
-          ->hydrate($relation, [
-            'movie_id' => $movie->getId(),
-            'language_id' => $language->getId()
-          ])->persist($relation);
       }
+
+      $relation = new MovieLanguage();
+      $relationRepository->hydrate($relation, [
+          'movie_id' => $movie->getId(),
+          'language_id' => $language->getId()
+        ])->persist($relation);
     }
   }
 
@@ -361,14 +365,14 @@ class TmdbUpdater extends Command
         $genre = new Genre();
         $repository->hydrate($genre, $this->normalizer->normalizeGenre($genreData));
         $repository->persist($genre);
-
-        $relation = new MovieGenre();
-        (new MovieGenreRepository())
-          ->hydrate($relation, [
-            'movie_id' => $movie->getId(),
-            'genre_id' => $genre->getId()
-          ])->persist($relation);
       }
+
+      $relation = new MovieGenre();
+      (new MovieGenreRepository())
+        ->hydrate($relation, [
+          'movie_id' => $movie->getId(),
+          'genre_id' => $genre->getId()
+        ])->persist($relation);
     }
   }
 
@@ -549,7 +553,7 @@ class TmdbUpdater extends Command
 
     $token = new ApiToken($this->config->path('tmdb_api.token'));
     $client = new Client($token);
-
+    
     $this->moviesApi = $client->getMoviesApi();
     $this->peopleApi = $client->getPeopleApi();
     $this->collectionApi = $client->getCollectionsApi();

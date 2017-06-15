@@ -23,25 +23,9 @@ use ColibriLabs\Lib\Util\Profiler;
 <body>
 
 <div class="modal-filter-box">
-  
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a href="../" class="navbar-brand">QiWi</a>
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      
-      <div class="navbar-collapse collapse" id="navbar-main">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="<?php echo $url->path('/'); ?>" target="_blank">Go To Homepage</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+  <?php echo $this->fetch('partials/navbar'); ?>
+
   <div class="container">
     
     <div class="row">
@@ -59,15 +43,17 @@ use ColibriLabs\Lib\Util\Profiler;
           <pre>HIDDEN/<?= basename($location) ?></pre>
           <h4>Memory: <b><?= $memory; ?></b></h4>
         </div>
-      
+
       </div>
     </div>
     
     <footer>
   
       <div class="btn-group">
-        <a class="btn btn-info" href="<?= $this->url('index/index', [], ['_message' => $message]); ?>">Home Page</a>
-        <a class="btn btn-warning" href="<?php echo sprintf('phpstorm://open?file=%s&line=%d;', $file, $line); ?>">Open in PhpStorm</a>
+        <a class="btn btn-primary" href="<?= $this->url('home'); ?>">
+          <i class="fa fa-home"></i>
+          Home Page
+        </a>
       </div>
     
     </footer>

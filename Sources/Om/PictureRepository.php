@@ -7,7 +7,77 @@
 
 namespace ColibriLabs\Database\Om;
 
+/**
+ * Class PictureRepository
+ * @package ColibriLabs\Database\Om
+ */
 class PictureRepository extends Base\BasePictureRepository
 {
-  // ... write your custom code here
+  
+  public function getQueryForOneRecord()
+  {
+    $query = $this->getFilterQuery();
+    $query->setLimit(1);
+    
+    return $query;
+  }
+  
+  public function getPosterForMovie(Movie $movie)
+  {
+    $query = $this->getQueryForOneRecord();
+  
+    $query->innerJoin(Poster::TABLE, [Picture::ID, Poster::PICTURE_ID]);
+    $query->where(Poster::MOVIE_ID, $movie->getId());
+    
+    /** @var Picture $poster */
+    $poster = $this->findOne(null);
+    
+    return $poster;
+  }
+  
+  /**
+   * @param Movie $movie
+   * @return Movie
+   */
+  public function injectPosterForMovie(Movie $movie)
+  {
+    $poster = $this->getPosterForMovie($movie);
+    $poster = $poster ?: new Picture();
+    
+    $movie->setPoster($poster);
+    
+    return $movie;
+  }
+  
+  /**
+   * @param Movie $movie
+   * @return Picture
+   */
+  public function getBackdropForMovie(Movie $movie)
+  {
+    $query = $this->getQueryForOneRecord();
+  
+    $query->innerJoin(Backdrop::TABLE, [Picture::ID, Backdrop::PICTURE_ID]);
+    $query->where(Backdrop::MOVIE_ID, $movie->getId());
+    
+    /** @var Picture $backdrop */
+    $backdrop = $this->findOne(null);
+    
+    return $backdrop;
+  }
+  
+  /**
+   * @param Movie $movie
+   * @return Movie
+   */
+  public function injectBackdropForMovie(Movie $movie)
+  {
+    $backdrop = $this->getBackdropForMovie($movie);
+    $backdrop = $backdrop ?: new Picture();
+    
+    $movie->setBackdrop($backdrop);
+    
+    return $movie;
+  }
+  
 }

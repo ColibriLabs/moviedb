@@ -44,47 +44,6 @@ body > .navbar {
   font-size: 4em
 }
 
-.bs-docs-section {
-  margin-top: 6em
-}
-
-.bs-docs-section h1 {
-  padding-top: 100px
-}
-
-.bs-component {
-  position: relative
-}
-
-.bs-component .modal {
-  position: relative;
-  top: auto;
-  right: auto;
-  left: auto;
-  bottom: auto;
-  z-index: 1;
-  display: block
-}
-
-.bs-component .modal-dialog {
-  width: 90%
-}
-
-.bs-component .popover {
-  position: relative;
-  display: inline-block;
-  width: 220px;
-  margin: 20px
-}
-
-#source-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 100;
-  font-weight: 700
-}
-
 .nav-tabs {
   margin-bottom: 15px
 }

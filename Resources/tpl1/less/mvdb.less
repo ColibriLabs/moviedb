@@ -25,6 +25,16 @@
     border-style: none;
   }
 
+  & .logo-link {
+    margin-right: 10px;
+  }
+
+  & .logo {
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
 }
 
 // Buttons ====================================================================
@@ -317,3 +327,24 @@ a.list-group-item {
 .popover {
   color: @text-color;
 }
+
+
+// Grid
+
+@media (min-width: 768px) {
+  .row {
+    &.equal {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.row {
+  &.equal > div[class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@import "movies";

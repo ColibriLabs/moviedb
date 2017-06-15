@@ -14,13 +14,11 @@ use Colibri\WebApp\Application;
 use Colibri\WebApp\ApplicationContainer;
 use ColibriLabs\Lib\Util\Profiler;
 
-
-
 /**
- * Class MoviesDbApplication
+ * Class QiwiTvApplication
  * @package ProCart\Core
  */
-class MoviesDbApplication extends Application\ConfigurableApplication
+class QiwiTvApplication extends Application\ConfigurableApplication
 {
   
   /**
@@ -65,6 +63,7 @@ class MoviesDbApplication extends Application\ConfigurableApplication
    */
   public function initializeColibriORM()
   {
+    /** @var Configuration $configuration */
     $configuration = Configuration::createFromFile(__DIR__ . '/../App/Config/Orm.php');
     ColibriORM::initialize($configuration);
     $developmentFile = $configuration->path('colibri_orm.dev_configuration');
@@ -79,6 +78,8 @@ class MoviesDbApplication extends Application\ConfigurableApplication
    */
   private function configurationRoutes()
   {
+    $this->router->add('/:controller/:id/:slug', ['action' => 'item']);
+
     return $this;
   }
   
