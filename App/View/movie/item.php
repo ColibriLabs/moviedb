@@ -7,11 +7,18 @@
 ?>
 <style>
   .movie-backdrop {
-    background-image: linear-gradient(
-      rgba(0, 0, 0, .6),
-      rgba(0, 0, 0, .8),
-      rgba(0, 0, 0, .9)
-    ), url(<?php echo $movie->getBackdrop()->getTmdbPicturePath(); ?>);
+    background-image:
+      linear-gradient(
+        rgba(0, 0, 0, .6),
+        rgba(0, 0, 0, .8),
+        rgba(0, 0, 0, .9)
+      ),
+      url(<?php echo $movie->getBackdrop()->getTmdbPicturePath(); ?>),
+      linear-gradient(
+        135deg,
+        rgb(0, 128, 102),
+        rgb(0, 70, 130)
+      );
   }
 </style>
 <div class="container-fluid ">

@@ -26,14 +26,14 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               darken(@gray-darker, 5%); //#fff;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:            lighten(@gray-lighter, 10%); //@gray-dark;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            @gray-lighter;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      lighten(@link-color, 15%);
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
@@ -107,7 +107,7 @@
 @border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    #fff;
+@component-active-color:    @gray-lighter;
 //** Global background color for active items (e.g., navs or dropdowns).
 @component-active-bg:       @gray;
 
@@ -129,13 +129,13 @@
 //** Default background color used for all tables.
 @table-bg:                      transparent;
 //** Background color used for `.table-striped`.
-@table-bg-accent:               #f9f9f9;
+@table-bg-accent:               @gray-darker;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                #f5f5f5;
+@table-bg-hover:                @gray-darker;
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
-@table-border-color:            #ddd;
+@table-border-color:            @gray-darker;
 
 
 //== Buttons
@@ -190,7 +190,7 @@
 @input-bg-disabled:              @gray-lighter;
 
 //** Text color for `<input>`s
-@input-color:                    @text-color;
+@input-color:                    @gray-darker;
 //** `<input>` border color
 @input-border:                   #ccc;
 
@@ -207,7 +207,7 @@
 @input-border-focus:             #66afe9;
 
 //** Placeholder text color
-@input-color-placeholder:        @gray-light;
+@input-color-placeholder:        @gray;
 
 //** Default `.form-control` height
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
@@ -236,16 +236,16 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    #fff;
+@dropdown-bg:                    @gray-dark;
 //** Dropdown menu `border-color`.
-@dropdown-border:                rgba(0,0,0,.15);
+@dropdown-border:                @gray-dark;
 //** Dropdown menu `border-color` **for IE8**.
-@dropdown-fallback-border:       #ccc;
+@dropdown-fallback-border:       @gray-dark;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            #e5e5e5;
+@dropdown-divider-bg:            @gray-darker;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @gray-dark;
+@dropdown-link-color:            @gray-lighter;
 //** Hover color for dropdown links.
 @dropdown-link-hover-color:      #fff;
 //** Hover background for dropdown links.
@@ -367,7 +367,7 @@
 @navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             #fff;
-@navbar-default-bg:                fade(@gray-base, 70%); // @gray-darker;
+@navbar-default-bg:                fade(@gray-base, 30%); // @gray-darker;
 @navbar-default-border:            transparent; //fade(@gray-base, 70%); // darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
@@ -393,7 +393,7 @@
 //=== Inverted navbar
 // Reset inverted navbar basics
 @navbar-inverse-color:                      #fff;
-@navbar-inverse-bg:                         darken(@brand-danger, 5%);
+@navbar-inverse-bg:                         darken(@brand-danger, 10%);
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
@@ -422,27 +422,27 @@
 
 //=== Shared nav styles
 @nav-link-padding:                          10px 15px;
-@nav-link-hover-bg:                         @gray-lighter;
+@nav-link-hover-bg:                         @gray-darker;
 
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
 //== Tabs
-@nav-tabs-border-color:                     #ddd;
+@nav-tabs-border-color:                     @gray-darker;
 
-@nav-tabs-link-hover-border-color:          @gray-lighter;
+@nav-tabs-link-hover-border-color:          @gray-darker;
 
-@nav-tabs-active-link-hover-bg:             @body-bg;
-@nav-tabs-active-link-hover-color:          @gray;
-@nav-tabs-active-link-hover-border-color:   #ddd;
+@nav-tabs-active-link-hover-bg:             @gray-darker;
+@nav-tabs-active-link-hover-color:          @gray-lighter;
+@nav-tabs-active-link-hover-border-color:   @gray-darker;
 
 @nav-tabs-justified-link-border-color:            #ddd;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
 //== Pills
 @nav-pills-border-radius:                   @border-radius-base;
-@nav-pills-active-link-hover-bg:            @component-active-bg;
-@nav-pills-active-link-hover-color:         @component-active-color;
+@nav-pills-active-link-hover-bg:            @gray-darker;
+@nav-pills-active-link-hover-color:         @gray-lighter;
 
 
 //== Pagination
@@ -450,20 +450,20 @@
 //##
 
 @pagination-color:                     @link-color;
-@pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
+@pagination-bg:                        @gray-darker;
+@pagination-border:                    @gray-darker;
 
 @pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @gray-lighter;
-@pagination-hover-border:              #ddd;
+@pagination-hover-bg:                  @gray-dark;
+@pagination-hover-border:              @gray-dark;
 
-@pagination-active-color:              @gray-light;
-@pagination-active-bg:                 #f5f5f5;
-@pagination-active-border:             #ddd;
+@pagination-active-color:              @link-hover-color;
+@pagination-active-bg:                 @gray-dark;
+@pagination-active-border:             @gray-dark;
 
 @pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
+@pagination-disabled-bg:               @gray-darker;
+@pagination-disabled-border:           @gray-darker;
 
 
 //== Pager
@@ -488,7 +488,7 @@
 
 @jumbotron-padding:              30px;
 @jumbotron-color:                inherit;
-@jumbotron-bg:                   @gray-lighter;
+@jumbotron-bg:                   @gray-darker;
 @jumbotron-heading-color:        inherit;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
 @jumbotron-heading-font-size:    ceil((@font-size-base * 4.5));
@@ -522,9 +522,9 @@
 //** Tooltip max width
 @tooltip-max-width:           200px;
 //** Tooltip text color
-@tooltip-color:               #fff;
+@tooltip-color:               @gray-lighter;
 //** Tooltip background color
-@tooltip-bg:                  #000;
+@tooltip-bg:                  @gray-darker;
 @tooltip-opacity:             .9;
 
 //** Tooltip arrow width
@@ -538,7 +538,7 @@
 //##
 
 //** Popover body background color
-@popover-bg:                          #fff;
+@popover-bg:                          @gray-darker;
 //** Popover maximum width
 @popover-max-width:                   276px;
 //** Popover border color
@@ -598,18 +598,18 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             #fff;
+@modal-content-bg:                             @gray-darker;
 //** Modal content border color
-@modal-content-border-color:                   transparent;
+@modal-content-border-color:                   @gray-dark;
 //** Modal content border color **for IE8**
-@modal-content-fallback-border-color:          #999;
+@modal-content-fallback-border-color:          @gray-dark;
 
 //** Modal backdrop background color
-@modal-backdrop-bg:           #fff;
+@modal-backdrop-bg:           #000;
 //** Modal backdrop opacity
 @modal-backdrop-opacity:      .2;
 //** Modal header border color
-@modal-header-border-color:   #e5e5e5;
+@modal-header-border-color:   @gray-dark;
 //** Modal footer border color
 @modal-footer-border-color:   @modal-header-border-color;
 
@@ -647,9 +647,9 @@
 //##
 
 //** Background color of the whole progress component
-@progress-bg:                 #ccc;
+@progress-bg:                 @gray-dark;
 //** Progress bar text color
-@progress-bar-color:          #fff;
+@progress-bar-color:          @gray-darker;
 //** Variable for setting rounded corners on progress bar.
 @progress-border-radius:      @border-radius-base;
 
@@ -670,14 +670,14 @@
 //##
 
 //** Background color on `.list-group-item`
-@list-group-bg:                 #fff;
+@list-group-bg:                 @gray-darker;
 //** `.list-group-item` border color
-@list-group-border:             #ddd;
+@list-group-border:             @gray-darker;
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
 //** Background color of single list items on hover
-@list-group-hover-bg:           #f5f5f5;
+@list-group-hover-bg:           @gray-dark;
 //** Text color of active list items
 @list-group-active-color:       @component-active-color;
 //** Background color of active list items
@@ -690,52 +690,52 @@
 //** Text color of disabled list items
 @list-group-disabled-color:      @gray-light;
 //** Background color of disabled list items
-@list-group-disabled-bg:         @gray-lighter;
+@list-group-disabled-bg:         @gray-dark;
 //** Text color for content within disabled list items
 @list-group-disabled-text-color: @list-group-disabled-color;
 
-@list-group-link-color:         #555;
+@list-group-link-color:         @gray-lighter;
 @list-group-link-hover-color:   @list-group-link-color;
-@list-group-link-heading-color: #333;
+@list-group-link-heading-color: @gray-light;
 
 
 //== Panels
 //
 //##
 
-@panel-bg:                    #fff;
+@panel-bg:                    @gray-darker;
 @panel-body-padding:          15px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
-@panel-inner-border:          #ddd;
-@panel-footer-bg:             #f5f5f5;
+@panel-inner-border:          @gray-darker;
+@panel-footer-bg:             @gray-dark;
 
-@panel-default-text:          @gray-dark;
-@panel-default-border:        #ddd;
-@panel-default-heading-bg:    #f5f5f5;
+@panel-default-text:          @gray-lighter;
+@panel-default-border:        @gray-darker;
+@panel-default-heading-bg:    @gray-dark;
 
 @panel-primary-text:          #fff;
-@panel-primary-border:        @brand-primary;
-@panel-primary-heading-bg:    @brand-primary;
+@panel-primary-border:        darken(@brand-primary, 10%);
+@panel-primary-heading-bg:    darken(@brand-primary, 10%);
 
 @panel-success-text:          @state-success-text;
-@panel-success-border:        @state-success-border;
-@panel-success-heading-bg:    @state-success-bg;
+@panel-success-border:        darken(@state-success-border, 10%);
+@panel-success-heading-bg:    darken(@state-success-bg, 10%);
 
 @panel-info-text:             @state-info-text;
-@panel-info-border:           @state-info-border;
-@panel-info-heading-bg:       @state-info-bg;
+@panel-info-border:           darken(@state-info-border, 10%);
+@panel-info-heading-bg:       darken(@state-info-bg, 10%);
 
 @panel-warning-text:          @state-warning-text;
-@panel-warning-border:        @state-warning-border;
-@panel-warning-heading-bg:    @state-warning-bg;
+@panel-warning-border:        darken(@state-warning-border, 10%);
+@panel-warning-heading-bg:    darken(@state-warning-bg, 10%);
 
 @panel-danger-text:           @state-danger-text;
-@panel-danger-border:         @state-danger-border;
-@panel-danger-heading-bg:     @state-danger-bg;
+@panel-danger-border:         darken(@state-danger-border, 10%);
+@panel-danger-heading-bg:     darken(@state-danger-bg, 10%);
 
 
 //== Thumbnails
@@ -761,7 +761,7 @@
 //
 //##
 
-@well-bg:                     #f5f5f5;
+@well-bg:                     @gray-darker;
 @well-border:                 darken(@well-bg, 7%);
 
 
@@ -791,11 +791,11 @@
 @breadcrumb-padding-vertical:   8px;
 @breadcrumb-padding-horizontal: 15px;
 //** Breadcrumb background color
-@breadcrumb-bg:                 #f5f5f5;
+@breadcrumb-bg:                 @gray-darker;
 //** Breadcrumb text color
-@breadcrumb-color:              #ccc;
+@breadcrumb-color:              @link-color;
 //** Text color of current page in the breadcrumb
-@breadcrumb-active-color:       @gray-light;
+@breadcrumb-active-color:       @link-hover-color;
 //** Textual separator for between breadcrumb elements
 @breadcrumb-separator:          "/";
 
@@ -830,15 +830,15 @@
 //
 //##
 
-@code-color:                  #c7254e;
-@code-bg:                     #f9f2f4;
+@code-color:                  @gray-lighter;
+@code-bg:                     @gray;
 
-@kbd-color:                   #fff;
-@kbd-bg:                      #333;
+@kbd-color:                   @gray-lighter;
+@kbd-bg:                      @gray;
 
-@pre-bg:                      #f5f5f5;
-@pre-color:                   @gray-dark;
-@pre-border-color:            #ccc;
+@pre-bg:                      @gray;
+@pre-color:                   @gray-lighter;
+@pre-border-color:            @gray-darker;
 @pre-scrollable-max-height:   340px;
 
 
@@ -861,7 +861,7 @@
 //** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
 //** Page header border color
-@page-header-border-color:    @gray-lighter;
+@page-header-border-color:    @gray-dark;
 //** Width of horizontal description list titles
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Point at which .dl-horizontal becomes horizontal

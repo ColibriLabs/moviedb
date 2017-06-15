@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-left" >
         <li>
           <a href="<?php echo $url->create('search'); ?>">
-            <i class="fa fa-search"></i>
+<!--            <i class="fa fa-search"></i>-->
             Discover
           </a>
         </li>
@@ -26,7 +26,7 @@
             data-toggle="dropdown"
             id="themes"
             href="#">
-            <i class="fa fa-video-camera"></i>
+<!--            <i class="fa fa-video-camera"></i>-->
             Movies
             <span class="caret"></span>
           </a>
@@ -39,13 +39,13 @@
         </li>
         <li>
           <a href="<?php echo $url->create('person:explore'); ?>">
-            <i class="fa fa-users"></i>
+<!--            <i class="fa fa-users"></i>-->
             People
           </a>
         </li>
         <li>
           <a href="<?php echo $url->create('stats:db'); ?>">
-            <i class="fa fa-line-chart"></i>
+<!--            <i class="fa fa-line-chart"></i>-->
             Stats
           </a>
         </li>
