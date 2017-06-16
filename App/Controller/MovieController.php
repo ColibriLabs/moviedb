@@ -55,13 +55,37 @@ class MovieController extends ControllerWeb
    */
   public function itemAction($movieId, $slug)
   {
+    /** @var Movie $movie */
     $repository = new MovieRepository();
     $movie = $repository->getMovieById($movieId);
-  
+    
+    $poster = $movie->getPoster();
+    $absolutePath = $poster->getAbsolutePath($this->config['pictures_root']);
+    
+    if (!file_exists($absolutePath)) {
+      file_put_contents($absolutePath, file_get_contents($poster->getTmdbPicturePath(), FILE_BINARY));
+    }
+    
     $this->setLayout('movie-layout');
     $this->view->set('movie', $movie);
   }
-
+  
+  /**
+   * @return void
+   */
+  public function lastAction()
+  {
+    $repository = new MovieRepository();
+    $repository->orderById('DESC');
+    
+    /** @var Movie $movie */
+    $movie = $repository->findOne(null);
+    $this->itemAction($movie->getId(), $movie->getTitleSlug());
+  }
+  
+  /**
+   * @return void
+   */
   public function exploreAction()
   {
     $this->movies->orderByBudget('DESC');

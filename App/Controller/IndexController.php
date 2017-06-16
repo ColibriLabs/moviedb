@@ -10,6 +10,8 @@ use ColibriLabs\Database\Om\Movie;
 use ColibriLabs\Database\Om\MovieRepository;
 use ColibriLabs\Lib\ControllerWeb;
 
+use ColibriLabs\Lib\Util\BaseConverter;
+use ColibriLabs\Lib\Util\BigIntPack;
 use Tmdb\ApiToken;
 use Tmdb\Client;
 use Tmdb\Helper\ImageHelper;
@@ -31,7 +33,15 @@ class IndexController extends ControllerWeb
   
   public function indexAction()
   {
-
+    $converter = BaseConverter::instance();
+    
+    $id = 27266;
+    $w = 801;
+    $h = 1380;
+    
+    $int = BigIntPack::pack($id, $w, $h);
+    
+    var_dump($int, $converter->encode($int), BigIntPack::unpack($converter->decode('qVP028n0'))); die;
   }
     
 }

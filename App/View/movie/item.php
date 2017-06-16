@@ -34,6 +34,7 @@
           </div>
           <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
             <h5 style="color: #fff; font-weight: 400">Animation&nbsp;&bull;&nbsp;Crime&nbsp;&bull;&nbsp;Fantasy</h5>
+            <h4 style="color: #fff; font-weight: 400"><?php echo $movie->getPoster()->getPictureHash(); ?></h4>
             <h2 style="color: #fff; font-weight: 400"><?php echo $movie->getTitle(); ?></h2>
           </div>
           <div style="color: #fff; font-weight: 400; text-align: justify;" class="col-lg-9 col-md-9 col-sm-8 col-xs-12">

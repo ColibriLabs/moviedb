@@ -5,6 +5,7 @@ return [
   'root' => realpath(__DIR__ . '/../..'),
   
   'tmdb_root' => '{application.resources}/tmdb',
+  'pictures_root' => '{application.resources}/Pictures',
   
   'application' => [
     

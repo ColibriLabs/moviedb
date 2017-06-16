@@ -6,6 +6,8 @@
 */
 
 namespace ColibriLabs\Database\Om;
+use ColibriLabs\Lib\Util\BaseConverter;
+use ColibriLabs\Lib\Util\BigIntPack;
 
 /**
  * Class Picture
@@ -20,6 +22,21 @@ class Picture extends Base\BasePicture
   public function getTmdbPicturePath()
   {
     return sprintf('https://image.tmdb.org/t/p/original%s', $this->getTmdbFilePath());
+  }
+  
+  /**
+   * @return int|string
+   */
+  public function getPictureHash()
+  {
+    $bigint = BigIntPack::pack($this->getId(), $this->getWidth(), $this->getHeight());
+    
+    return BaseConverter::instance()->encode($bigint);
+  }
+  
+  public function getAbsolutePath($absolutePath)
+  {
+    return sprintf('%s/%s.jpg', $absolutePath, $this->getPictureHash());
   }
   
 }
