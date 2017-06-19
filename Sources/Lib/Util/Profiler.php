@@ -40,7 +40,7 @@ class Profiler
     $start = new DateTime(sprintf('@%d', static::$timerStart));
     $now = new DateTime();
     
-    return $now->diff($start)->format('%h hours %i minutes %s seconds');
+    return $now->diff($start)->format('%d, %h:%i:%s');
   }
   
   /**

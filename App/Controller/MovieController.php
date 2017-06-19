@@ -3,6 +3,7 @@
 namespace ColibriLabs\Controller;
 
 use Behat\Transliterator\Transliterator;
+use Colibri\Query\Expr\Func\Rand;
 use ColibriLabs\Database\Om\Movie;
 use ColibriLabs\Database\Om\MovieRepository;
 use ColibriLabs\Database\Om\PosterRepository;
@@ -58,14 +59,7 @@ class MovieController extends ControllerWeb
     /** @var Movie $movie */
     $repository = new MovieRepository();
     $movie = $repository->getMovieById($movieId);
-    
-    $poster = $movie->getPoster();
-    $absolutePath = $poster->getAbsolutePath($this->config['pictures_root']);
-    
-    if (!file_exists($absolutePath)) {
-      file_put_contents($absolutePath, file_get_contents($poster->getTmdbPicturePath(), FILE_BINARY));
-    }
-    
+
     $this->setLayout('movie-layout');
     $this->view->set('movie', $movie);
   }
@@ -80,6 +74,7 @@ class MovieController extends ControllerWeb
     
     /** @var Movie $movie */
     $movie = $repository->findOne(null);
+
     $this->itemAction($movie->getId(), $movie->getTitleSlug());
   }
   
@@ -93,7 +88,18 @@ class MovieController extends ControllerWeb
     $collection = $this->movies->findAll()->getCollection();
 
     $this->view->set('movies', $collection);
-    $this->view->set('posters', $this->posters->getTmdbPictureCollection($collection));
+  }
+
+  /**
+   * @return void
+   */
+  public function randomAction()
+  {
+    $this->movies->orderBy([new Rand()]);
+    $this->movies->getFilterQuery()->setLimit(30);
+    $collection = $this->movies->findAll()->getCollection();
+
+    $this->view->set('movies', $collection);
   }
 
 }

@@ -6,6 +6,9 @@
 */
 
 namespace ColibriLabs\Database\Om;
+
+use Colibri\Parameters\ParametersCollection;
+use ColibriLabs\Lib\Exception\RuntimeException;
 use ColibriLabs\Lib\Util\BaseConverter;
 use ColibriLabs\Lib\Util\BigIntPack;
 
@@ -23,20 +26,73 @@ class Picture extends Base\BasePicture
   {
     return sprintf('https://image.tmdb.org/t/p/original%s', $this->getTmdbFilePath());
   }
-  
+
   /**
-   * @return int|string
+   * @return string
+   * @throws RuntimeException
+   */
+  public function getPicturePath()
+  {
+    $configuration = $this->getConfiguration();
+
+    if (null !== $configuration) {
+      $urn = $configuration->path('urn_images');
+
+      if (false === file_exists($this->getAbsolutePath()) && !empty($this->getTmdbFilePath())) {
+        $bytes = file_put_contents($this->getAbsolutePath(),
+          file_get_contents($this->getTmdbPicturePath(), FILE_BINARY));
+
+        if ($bytes > 0) {
+          $this->setFilePath($this->getPictureFilename());
+          $repository = new PictureRepository();
+          $repository->persist($this);
+        }
+      }
+
+      return sprintf('%s%s', $urn, $this->getPictureFilename());
+    }
+  }
+
+  /**
+   * @return string
+   */
+  public function getPictureFilename()
+  {
+    return sprintf('%s.jpg', $this->getPictureHash());
+  }
+
+  /**
+   * @return string
    */
   public function getPictureHash()
   {
-    $bigint = BigIntPack::pack($this->getId(), $this->getWidth(), $this->getHeight());
-    
-    return BaseConverter::instance()->encode($bigint);
+    return BaseConverter::instance()->encode(BigIntPack::pack($this->getId(), $this->getWidth(), $this->getHeight()));
   }
-  
-  public function getAbsolutePath($absolutePath)
+
+  /**
+   * @return string
+   */
+  public function getAbsolutePath()
   {
+    $absolutePath = $this->getConfiguration()->path('root_images');
+
     return sprintf('%s/%s.jpg', $absolutePath, $this->getPictureHash());
+  }
+
+  /**
+   * @return ParametersCollection
+   */
+  public function getConfiguration()
+  {
+    return $this->getVirtual('configuration');
+  }
+
+  /**
+   * @return string
+   */
+  public function __toString()
+  {
+    return (string) $this->getPicturePath();
   }
   
 }

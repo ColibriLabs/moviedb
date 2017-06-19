@@ -12,6 +12,10 @@ use Colibri\Template\Template;
 use Colibri\UrlGenerator\UrlBuilder;
 use Colibri\WebApp\Application;
 use Colibri\WebApp\ApplicationContainer;
+use ColibriLabs\Lib\Orm\PictureEntityInjection;
+use ColibriLabs\Lib\Orm\Sluggable;
+use ColibriLabs\Lib\Orm\Timestampable;
+use ColibriLabs\Lib\Orm\Versionable;
 use ColibriLabs\Lib\Util\Profiler;
 
 /**
@@ -69,6 +73,13 @@ class QiwiTvApplication extends Application\ConfigurableApplication
     $developmentFile = $configuration->path('colibri_orm.dev_configuration');
     file_exists($developmentFile) && $configuration->merge(Configuration::createFromFile($developmentFile));
     $this->getContainer()->set('colibri', ColibriORM::getServiceContainer());
+
+    ColibriORM::getServiceContainer()->getDispatcher()
+      ->subscribeListener(new Timestampable($configuration))
+      ->subscribeListener(new Versionable($configuration))
+      ->subscribeListener(new Sluggable($configuration))
+      ->subscribeListener(new PictureEntityInjection($configuration, $this->config))
+    ;
     
     return $this;
   }
@@ -94,7 +105,7 @@ class QiwiTvApplication extends Application\ConfigurableApplication
         $message = get_class($exception) . ": {$exception->getMessage()}";
         
         $trace = $exception->getTraceAsString();
-        
+
         if (null !== $exception->getPrevious()) {
           $trace = sprintf("%s\n-- PREV\n%s", $trace, $exception->getPrevious()->getTraceAsString());
         }

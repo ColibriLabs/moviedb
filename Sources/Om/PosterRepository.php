@@ -7,7 +7,44 @@
 
 namespace ColibriLabs\Database\Om;
 
+use Colibri\Collection\ArrayCollection;
+use Colibri\Core\Collection\EntityCollection;
+use Colibri\Core\Entity\EntityInterface;
+
 class PosterRepository extends Base\BasePosterRepository
 {
-  // ... write your custom code here
+
+  public function getPostersForMovies(EntityCollection $collection)
+  {
+    $movieIDs = $collection->values(Movie::ID_KEY);
+
+    $posters = new PosterRepository();
+    $posters->filterById($movieIDs->toArray());
+    $posters->groupByMovieId();
+
+    $posterRS = $posters->findAll();
+    $posterCollection  = $posterRS->getCollection();
+
+    $pictureIDs = $posterCollection->values(Poster::PICTURE_ID_KEY)->toArray();
+
+    $pictures = new PictureRepository();
+    $pictures->filterById($pictureIDs);
+
+    $pictures = $pictures->findAll();
+
+    $pictureCollection = $pictures->getCollection();
+
+    $collection = new ArrayCollection();
+
+    foreach ($posterCollection->toArray() as $posterItem) {
+      $pictureCollection->each(function($i, EntityInterface $entity) use ($posterItem, &$collection) {
+        if ( $entity->getByName(Picture::ID_KEY) ==  $posterItem['picture_id']) {
+          $collection->set($posterItem['movie_id'], $entity);
+        }
+      });
+    }
+
+    return $collection;
+  }
+
 }

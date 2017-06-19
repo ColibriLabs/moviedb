@@ -25,6 +25,7 @@ return [
   ],
   
   'extensions' => [
+    'picture_entity' => [],
     'sluggable' => [],
     'timestampable' => [
       \ColibriLabs\Database\Om\Movie::class => [
