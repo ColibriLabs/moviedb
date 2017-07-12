@@ -7,7 +7,32 @@
 
 namespace ColibriLabs\Database\Om;
 
+/**
+ * Class Character
+ * @package ColibriLabs\Database\Om
+ */
 class Character extends Base\BaseCharacter
 {
-  // ... write your custom code here
+  
+  /**
+   * @var Profile
+   */
+  protected $profile;
+  
+  /**
+   * @return Profile
+   */
+  public function getProfile()
+  {
+    return $this->profile;
+  }
+  
+  /**
+   * @param Profile $profile
+   */
+  public function setProfile(Profile $profile)
+  {
+    $this->profile = $profile;
+  }
+  
 }

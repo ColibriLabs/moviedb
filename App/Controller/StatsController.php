@@ -18,7 +18,7 @@ class StatsController extends ControllerWeb
   public function dbAction()
   {
     $this->setLayout('layout');
-
+    
     $select = new Select($this->colibri->getConnection());
 
     $select->count(Movie::ID, null);

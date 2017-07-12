@@ -58,7 +58,9 @@ class MovieController extends ControllerWeb
   {
     /** @var Movie $movie */
     $repository = new MovieRepository();
-    $movie = $repository->getMovieById($movieId);
+    $movie = $repository->retrieve($movieId);
+
+//    var_dump($movie->getVirtualColumns());
 
     $this->setLayout('movie-layout');
     $this->view->set('movie', $movie);
@@ -84,7 +86,7 @@ class MovieController extends ControllerWeb
   public function exploreAction()
   {
     $this->movies->orderByBudget('DESC');
-    $this->movies->getFilterQuery()->setLimit(30);
+    $this->movies->getQuery()->setLimit(60);
     $collection = $this->movies->findAll()->getCollection();
 
     $this->view->set('movies', $collection);
@@ -96,7 +98,7 @@ class MovieController extends ControllerWeb
   public function randomAction()
   {
     $this->movies->orderBy([new Rand()]);
-    $this->movies->getFilterQuery()->setLimit(30);
+    $this->movies->getQuery()->setLimit(30);
     $collection = $this->movies->findAll()->getCollection();
 
     $this->view->set('movies', $collection);

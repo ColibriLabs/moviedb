@@ -25,7 +25,10 @@ return [
   ],
   
   'extensions' => [
-    'picture_entity' => [],
+    
+    \ColibriLabs\Lib\Orm\MovieCompleter::class => [],
+    \ColibriLabs\Lib\Orm\PictureCompleter::class => [],
+    
     'sluggable' => [],
     'timestampable' => [
       \ColibriLabs\Database\Om\Movie::class => [

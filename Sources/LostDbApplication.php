@@ -3,7 +3,9 @@
 namespace ColibriLabs;
 
 use Colibri\ColibriORM;
+use Colibri\Collection\ArrayCollection;
 use Colibri\Common\Configuration;
+use Colibri\Connection\ConnectionEvent;
 use Colibri\Parameters\ParametersCollection;
 use Colibri\Http\Response;
 use Colibri\ServiceLocator\Service;
@@ -12,17 +14,21 @@ use Colibri\Template\Template;
 use Colibri\UrlGenerator\UrlBuilder;
 use Colibri\WebApp\Application;
 use Colibri\WebApp\ApplicationContainer;
-use ColibriLabs\Lib\Orm\PictureEntityInjection;
+use ColibriLabs\Lib\Orm\MovieCompleter;
+use ColibriLabs\Lib\Orm\PictureCompleter;
 use ColibriLabs\Lib\Orm\Sluggable;
 use ColibriLabs\Lib\Orm\Timestampable;
 use ColibriLabs\Lib\Orm\Versionable;
 use ColibriLabs\Lib\Util\Profiler;
 
 /**
- * Class QiwiTvApplication
- * @package ProCart\Core
+ *
+ * @property ArrayCollection $queries
+ *
+ * Class LostDbApplication
+ * @package ColibriLabs
  */
-class QiwiTvApplication extends Application\ConfigurableApplication
+class LostDbApplication extends Application\ConfigurableApplication
 {
   
   /**
@@ -31,12 +37,14 @@ class QiwiTvApplication extends Application\ConfigurableApplication
   public function __construct()
   {
     parent::__construct(new ParametersCollection(include_once __DIR__ . '/../App/Config/Config.php'));
-  
+
     if (file_exists($this->config->path('application.dev-config'))) {
       $this->config->merge(new ParametersCollection(include_once $this->config->path('application.dev-config')));
     }
     
     $this->config->handlePlaceholders();
+
+    $this->getContainer()->set('queries', new ArrayCollection());
   }
   
   /**
@@ -74,13 +82,20 @@ class QiwiTvApplication extends Application\ConfigurableApplication
     file_exists($developmentFile) && $configuration->merge(Configuration::createFromFile($developmentFile));
     $this->getContainer()->set('colibri', ColibriORM::getServiceContainer());
 
-    ColibriORM::getServiceContainer()->getDispatcher()
+    $dispatcher = ColibriORM::getServiceContainer()->getDispatcher();
+    
+    $dispatcher
       ->subscribeListener(new Timestampable($configuration))
       ->subscribeListener(new Versionable($configuration))
       ->subscribeListener(new Sluggable($configuration))
-      ->subscribeListener(new PictureEntityInjection($configuration, $this->config))
+      ->subscribeListener(new MovieCompleter($configuration))
+      ->subscribeListener(new PictureCompleter($configuration, $this->config))
     ;
-    
+
+    $dispatcher->addListener(ConnectionEvent::ON_QUERY, function(ConnectionEvent $event) {
+      $this->queries->push($event->getQuery());
+    });
+
     return $this;
   }
   
@@ -90,7 +105,8 @@ class QiwiTvApplication extends Application\ConfigurableApplication
   private function configurationRoutes()
   {
     $this->router->add('/:controller/:id/:slug', ['action' => 'item']);
-
+    $this->router->add('/:hash.parse', ['action' => 'index', 'controller' => 'index']);
+    
     return $this;
   }
   
@@ -143,7 +159,7 @@ class QiwiTvApplication extends Application\ConfigurableApplication
   private function createErrorResponse($message, $file = null, $line = null, $stackTrace = null)
   {
     ob_clean();
-    
+
     $this->view->batch([
       'message' => $message,
       'memory' => $this->memoryUsage(),
@@ -157,7 +173,7 @@ class QiwiTvApplication extends Application\ConfigurableApplication
     foreach ($this->getContainer() as $service) {
       $this->view->set($service->getName(), $this->getContainer()->get($service->getName()));
     }
-    
+
     $this->response
       ->setContent($this->view->render('error'))
       ->setBodyFormat(Response::RESPONSE_HTML)

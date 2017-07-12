@@ -8,6 +8,8 @@
 namespace ColibriLabs\Database\Om;
 
 use Behat\Transliterator\Transliterator;
+use Colibri\Collection\ArrayCollection;
+use Colibri\Core\Collection\EntityCollection;
 
 /**
  * Class Movie
@@ -17,11 +19,48 @@ class Movie extends Base\BaseMovie
 {
   
   /**
+   * @var MovieRepository
+   */
+  protected $repository;
+  
+  /**
    * @return string
    */
   public function getTitleSlug()
   {
     return Transliterator::urlize(Transliterator::utf8ToAscii($this->getTitle()));
+  }
+  
+  /**
+   * @return Character[]|EntityCollection
+   */
+  public function getCharacters()
+  {
+    if (false === $this->virtual->has('characters')) {
+      $characters = $this->repository->loadCharacters($this);
+      $this->virtual->set('characters', $characters);
+    }
+    
+    return $this->virtual->offsetGet('characters');
+  }
+  
+  /**
+   * @return Genre[]|EntityCollection
+   */
+  public function getGenres()
+  {
+    return $this->virtual->get('genres', new EntityCollection([]));
+  }
+  
+  /**
+   * @param ArrayCollection $collection
+   * @return $this
+   */
+  public function setGenres(ArrayCollection $collection)
+  {
+    $this->virtual->set('genres', $collection);
+    
+    return $this;
   }
   
   /**
@@ -48,6 +87,10 @@ class Movie extends Base\BaseMovie
    */
   public function getBackdrop()
   {
+    if (false === $this->virtual->has('backdrop')) {
+      
+    }
+    
     return $this->virtual->get('backdrop', new Picture());
   }
   
@@ -58,6 +101,25 @@ class Movie extends Base\BaseMovie
   public function setBackdrop(Picture $backdrop)
   {
     $this->virtual->offsetSet('backdrop', $backdrop);
+    
+    return $this;
+  }
+  
+  /**
+   * @return MovieRepository
+   */
+  public function getRepository()
+  {
+    return $this->repository;
+  }
+  
+  /**
+   * @param MovieRepository $repository
+   * @return $this
+   */
+  public function setRepository(MovieRepository $repository)
+  {
+    $this->repository = $repository;
     
     return $this;
   }

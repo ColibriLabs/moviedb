@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>QiWi.tv</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="stylesheet" href="<?php echo $url->staticPath('css/site.min.css'); ?>" media="screen">
-</head>
+<?php echo $this->fetch('partials/head'); ?>
 <body>
 
 <div class="modal-filter-box">
@@ -15,6 +9,8 @@
     <?php echo $content; ?>
   </div>
 </div>
+
+<?php echo $this->fetch('partials/debug'); ?>
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="<?php echo $url->staticPath('js/bootstrap.min.js'); ?>"></script>

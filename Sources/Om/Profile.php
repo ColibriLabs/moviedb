@@ -7,7 +7,38 @@
 
 namespace ColibriLabs\Database\Om;
 
+use Colibri\Collection\ArrayCollection;
+
+/**
+ * Class Profile
+ *
+ * @package ColibriLabs\Database\Om
+ */
 class Profile extends Base\BaseProfile
 {
-  // ... write your custom code here
+
+  /**
+   * @var ArrayCollection|Picture[]
+   */
+  protected $pictures;
+
+  /**
+   * @return ArrayCollection|Picture[]
+   */
+  public function getPictures()
+  {
+    return $this->pictures;
+  }
+
+  /**
+   * @param ArrayCollection|Picture[] $pictures
+   * @return $this
+   */
+  public function setPictures(ArrayCollection $pictures)
+  {
+    $this->pictures = $pictures;
+
+    return $this;
+  }
+
 }

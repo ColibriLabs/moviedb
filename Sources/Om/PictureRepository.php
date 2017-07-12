@@ -9,6 +9,7 @@ namespace ColibriLabs\Database\Om;
 
 /**
  * Class PictureRepository
+ *
  * @package ColibriLabs\Database\Om
  */
 class PictureRepository extends Base\BasePictureRepository
@@ -16,12 +17,16 @@ class PictureRepository extends Base\BasePictureRepository
   
   public function getQueryForOneRecord()
   {
-    $query = $this->getFilterQuery();
+    $query = $this->getQuery();
     $query->setLimit(1);
     
     return $query;
   }
-  
+
+  /**
+   * @param Movie $movie
+   * @return Picture
+   */
   public function getPosterForMovie(Movie $movie)
   {
     $query = $this->getQueryForOneRecord();
@@ -78,6 +83,32 @@ class PictureRepository extends Base\BasePictureRepository
     $movie->setBackdrop($backdrop);
     
     return $movie;
+  }
+
+  public function getPicturesForCharacters(array $characterIds)
+  {
+    $query = $this->getQuery();
+
+    $query->innerJoin(Photo::TABLE, [Photo::PICTURE_ID, Picture::ID]);
+    $query->innerJoin(Profile::TABLE, [Photo::PROFILE_ID, Profile::ID]);
+    $query->innerJoin(Character::TABLE, [Profile::ID, Character::PROFILE_ID]);
+
+    $query->addSelectColumn(Character::PROFILE_ID);
+
+    $query->whereIn(Character::ID, $characterIds);
+
+    $query->groupBy(Photo::PICTURE_ID);
+
+    return $this->findAll()->getCollection();
+  }
+
+  /**
+   * @param array $ids
+   * @return \Colibri\Core\Collection\EntityCollection
+   */
+  public function loadPicturesForIds(array $ids)
+  {
+    return $this->find($ids)->getCollection();
   }
   
 }

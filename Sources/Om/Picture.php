@@ -38,10 +38,9 @@ class Picture extends Base\BasePicture
     if (null !== $configuration) {
       $urn = $configuration->path('urn_images');
 
-      if (false === file_exists($this->getAbsolutePath()) && !empty($this->getTmdbFilePath())) {
+      if (false === file_exists($this->getAbsolutePath())) {
         $bytes = file_put_contents($this->getAbsolutePath(),
           file_get_contents($this->getTmdbPicturePath(), FILE_BINARY));
-
         if ($bytes > 0) {
           $this->setFilePath($this->getPictureFilename());
           $repository = new PictureRepository();

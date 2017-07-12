@@ -10,8 +10,8 @@
 @gray-light:             lighten(@gray-base, 60%);   // #999
 @gray-lighter:           lighten(@gray-base, 90%); // #eee
 
-@brand-primary:         #9954BB; //#2780E3;
-@brand-success:         #3FB618;
+@brand-primary:         #27AE60; //#9954BB; //#2780E3;
+@brand-success:         #9954BB;
 @brand-info:            #1ab4bc;
 @brand-warning:         #FF7518;
 @brand-danger:          #ff0a69;
@@ -385,11 +385,10 @@
 @navbar-default-toggle-icon-bar-bg:        #fff;
 @navbar-default-toggle-border-color:       transparent;
 
-
 //=== Inverted navbar
 // Reset inverted navbar basics
 @navbar-inverse-color:                      #fff;
-@navbar-inverse-bg:                         darken(@brand-danger, 5%);
+@navbar-inverse-bg:                         darken(@brand-primary, 5%);
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
@@ -639,9 +638,6 @@
 
 
 //== Progress bars
-//
-//##
-
 //** Background color of the whole progress component
 @progress-bg:                 #ccc;
 //** Progress bar text color
@@ -659,7 +655,6 @@
 @progress-bar-danger-bg:      @brand-danger;
 //** Info progress bar color
 @progress-bar-info-bg:        @brand-info;
-
 
 //== List group
 //

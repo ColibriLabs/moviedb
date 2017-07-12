@@ -7,7 +7,112 @@
 
 namespace ColibriLabs\Database\Om;
 
+use Colibri\Collection\ArrayCollection;
+use Colibri\Core\Collection\EntityCollection;
+use Colibri\Query\Expr\Column;
+use Colibri\Query\Expr\Func\Concat;
+use Colibri\Query\Expr\Func\IfFunc;
+use Colibri\Query\Expr\Func\Isnull;
+use Colibri\Query\Expr\Func\Rand;
+use ColibriLabs\Lib\Collection\ResultSetLazyCollection;
+use ColibriLabs\Lib\Util\Profiler;
+
+/**
+ * Class CharacterRepository
+ * @package ColibriLabs\Database\Om
+ */
 class CharacterRepository extends Base\BaseCharacterRepository
 {
-  // ... write your custom code here
+
+  /**
+   * @var EntityCollection|Profile[]
+   */
+  protected $profiles;
+
+  /**
+   * @param Movie $movie
+   * @return EntityCollection|Character[]
+   */
+  public function loadCharactersForMovie(Movie $movie)
+  {
+    $picturesRepository = new PictureRepository();
+    $photosRepository   = new PhotoRepository();
+
+    $query = $this->getQuery();
+    
+    $query->setParameterized(true);
+  
+    $query->where(Character::MOVIE_ID, $movie->getId());
+    
+    $query->clearSelectColumns();
+  
+    $query->innerJoin(Profile::TABLE, [Character::PROFILE_ID, Profile::ID]);
+    $query->innerJoin(Photo::TABLE, [Profile::ID, Photo::PROFILE_ID]);
+    $query->innerJoin(Picture::TABLE, [Photo::PICTURE_ID, Picture::ID]);
+    
+    $query->addSelectColumns([
+      Character::CHARACTER, Profile::NAME, Picture::ISO_639_1,
+      [Character::ID, 'characterID'], [Profile::ID, 'profileID'],
+      [new IfFunc(new Isnull(new Column(Picture::FILE_PATH)), '0', '1'), 'pictureExist'],
+      [new Concat('//s1.lostdb.com/', new Column(Picture::FILE_PATH), '#rnd', new Rand()), 'full_picture_path']
+    ]);
+  
+    $query->groupBy(Character::ID);
+  
+    $query->setComment(__METHOD__);
+    
+    $collection = new ResultSetLazyCollection();
+    $collection->setStatementIterator($this->executeQueryStmt());
+    
+    foreach ($collection as $item) {
+      var_dump($item);
+    }
+    
+    die;
+    
+    $characters   = $this->findAll()->getCollection();
+    $pictures     = $picturesRepository->getPicturesForCharacters($characters->values('id')->toArray());
+    $photos       = $photosRepository->filterByPictureId($pictures->values('id')->toArray())
+      ->findAll()->getCollection();
+
+    /** @var EntityCollection $profiles */
+    $profiles = $this->loadProfileCollection($characters->values(Character::PROFILE_ID_KEY));
+
+    /** @var Character $character */
+    foreach ($characters as $character) {
+
+      /** @var Profile $profile */
+      $profile = $profiles->get($character->getProfileId());
+      $profilePictures = new ArrayCollection();
+
+      /** @var Photo $photo */
+      foreach ($photos as $photo) {
+        if ($photo->getProfileId() === $profile->getId()) {
+          $profilePictures->push($pictures->get($photo->getPictureId()));
+        }
+      }
+
+      $profile->setPictures($profilePictures);
+
+      $character->setProfile($profile);
+    }
+
+    return $characters;
+  }
+
+  /**
+   * @param ArrayCollection $profilesIds
+   * @return ArrayCollection
+   */
+  public function loadProfileCollection(ArrayCollection $profilesIds)
+  {
+    if ($this->profiles === null) {
+      $repository = new ProfileRepository();
+      $repository->filterById($profilesIds->toArray());
+      $this->profiles = $repository->findAll()->getCollection();
+    }
+
+    return $this->profiles;
+  }
+  
 }

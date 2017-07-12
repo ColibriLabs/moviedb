@@ -1,17 +1,102 @@
 .movie-backdrop {
+  z-index: -1;
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: -1;
+  max-height: 600px;
+  min-height: 450px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.movie-overlay {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-image: linear-gradient(
+          to left,
+          transparent 80%,
+          rgba(47, 52, 60, 1) 100%
+  ),
+  linear-gradient(
+          to right,
+          transparent 80%,
+          rgba(47, 52, 60, 1) 100%
+  ),
+  linear-gradient(
+          -127deg,
+          transparent 80%,
+          rgba(47, 52, 60, 1) 100%
+  ),
+  linear-gradient(
+          127deg,
+          transparent 80%,
+          rgba(47, 52, 60, 1) 100%
+  ),
+  linear-gradient(
+          rgba(47, 52, 60, .2),
+          rgba(47, 52, 60, .5) 50%,
+          rgba(47, 52, 60, 1.0)
+  );
 }
 
 .movie-container {
   padding-bottom: 35px;
 }
 
-.movie-poster {
-  padding-top: 65px;
+.movie-main {
+  padding-top: 50px;
 }
+
+.movie-left-side {
+  margin-top: 250px;
+}
+
+.movie-genres {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-poster {
+  box-shadow: 0 0 20px 10px rgba(47, 52, 60, 0.77);
+}
+
+@media (max-width: 768px) {
+
+  .movie-backdrop {
+    max-height: 350px;
+    min-height: 350px;
+  }
+
+  .movie-overlay {
+    background-image: linear-gradient(transparent 0%, rgba(47,52,60,.6) 50%, #2f343c);
+  }
+
+  .movie-container {
+    margin-top: 20%;
+  }
+
+  .movie-left-side {
+    margin-top: 50px;
+  }
+
+}
+
+.people-list {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.photos-inline {
+  display: inline-block;
+  width: 200px;
+}
+
+

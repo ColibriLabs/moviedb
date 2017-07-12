@@ -6,7 +6,7 @@ return [
   
   'tmdb_root' => '{application.resources}/tmdb',
   'root_images' => '{application.resources}/Pictures',
-  'urn_images' => '//images.dezz.pro/',
+  'urn_images' => '//s1.lostdb.com/',
   
   'application' => [
     

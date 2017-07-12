@@ -115,10 +115,11 @@ class TmdbUpdater extends Command
 
     $lastMovie = $repository->findOne(null);
     $lastMovieId = $lastMovie instanceof Movie ? $lastMovie->getTmdbId() : 1;
+    $lastTmdbId = (integer)$this->moviesApi->getLatest()['id'];
+    
+    $output->writeln(sprintf('Start iterate from %d until %d', $lastMovieId, $lastTmdbId));
 
-    $until = 500000;
-
-    for ($i = $lastMovieId; $i < $until; $i++) {
+    for ($i = $lastMovieId; $i <= $lastTmdbId; $i++) {
       try {
         $response = $this->moviesApi->getMovie($i);
 

@@ -9,5 +9,10 @@ namespace ColibriLabs\Database\Om;
 
 class ProfileRepository extends Base\BaseProfileRepository
 {
-  // ... write your custom code here
+  
+  public function loadProfilesForMovie(Movie $movie)
+  {
+    
+  }
+  
 }

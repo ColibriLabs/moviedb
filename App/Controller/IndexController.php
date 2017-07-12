@@ -3,6 +3,7 @@
 namespace ColibriLabs\Controller;
 
 use Colibri\Core\Entity\RepositoryInterface;
+use Colibri\Html\Element\SelectElement;
 use Colibri\Http\Response;
 use Colibri\Pagination\Paginator;
 use Colibri\Query\Statement\OrderBy;
@@ -12,6 +13,7 @@ use ColibriLabs\Lib\ControllerWeb;
 
 use ColibriLabs\Lib\Util\BaseConverter;
 use ColibriLabs\Lib\Util\BigIntPack;
+use ColibriLabs\Lib\Util\Locale;
 use Tmdb\ApiToken;
 use Tmdb\Client;
 use Tmdb\Helper\ImageHelper;
@@ -31,17 +33,14 @@ class IndexController extends ControllerWeb
     $this->setLayout('layout');
   }
   
-  public function indexAction()
+  /**
+   * @param null|string $hash
+   */
+  public function indexAction($hash = null)
   {
     $converter = BaseConverter::instance();
-    
-    $id = 27266;
-    $w = 801;
-    $h = 1380;
-    
-    $int = BigIntPack::pack($id, $w, $h);
-    
-    var_dump($int, $converter->encode($int), BigIntPack::unpack($converter->decode('qVP028n0'))); die;
+
+    return var_export(BigIntPack::unpack($converter->decode($hash)), true);
   }
     
 }

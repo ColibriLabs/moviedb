@@ -1,14 +1,18 @@
-// Cosmo 3.3.7
-// Bootswatch
-// -----------------------------------------------------
+@web-fonts1: "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese";
+@web-fonts2: "https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700&subset=cyrillic,latin-ext,vietnamese";
+@web-fonts3: "https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=cyrillic,cyrillic-ext,greek,latin-ext,vietnamese";
+@web-fonts4: "https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=cyrillic,cyrillic-ext,latin-ext";
+@web-fonts5: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700";
 
-@web-font-path: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700";
-
-.web-font(@path) {
+.webFontImport(@path) {
   @import url("@{path}");
 }
 
-.web-font(@web-font-path);
+.webFontImport(@web-fonts1);
+.webFontImport(@web-fonts2);
+.webFontImport(@web-fonts3);
+.webFontImport(@web-fonts4);
+.webFontImport(@web-fonts5);
 
 // Navbar =====================================================================
 
@@ -21,26 +25,29 @@
     }
   }
 
-  & .form-control{
+  & .form-control {
     border-style: none;
   }
 
-  & .logo-link {
-    margin-right: 10px;
+  & .navbar-brand {
+    font-family: @font-family-logo;
+    font-size: 24px;
+    line-height: 25px;
+    font-smoothing: antialiased;
   }
 
-  & .logo {
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  &-default {
+    background-color: fade(@gray-base, 70%);
   }
 
-  //&-default {
-  //  & .navbar-nav > li {
-  //    text-transform: uppercase;
-  //  }
-  //}
+}
 
+@media (max-width: 768px) {
+  .navbar {
+    &-default {
+      background-color: @gray-base;
+    }
+  }
 }
 
 // Buttons ====================================================================
@@ -137,7 +144,6 @@ table,
 }
 
 // Forms ======================================================================
-
 
 .has-warning {
   .help-block,
@@ -252,19 +258,10 @@ table,
   border-radius: 0;
 }
 
-// Progress bars ==============================================================
-
 .progress {
   height: 20px;
-  background-color: @gray-dark;
   .box-shadow(none);
 }
-
-// Containers =================================================================
-//
-//.modal-filter-box {
-//  transition:filter .2s linear
-//}
 
 .panel {
   &-heading,
@@ -286,8 +283,8 @@ table,
   }
 }
 
-.modal-open{
-  .modal-filter-box{
+.modal-open {
+  .modal-filter-box {
     filter: blur(1px);
   }
 }
@@ -297,7 +294,6 @@ table,
 }
 
 // Grid
-
 @media (min-width: 768px) {
   .row {
     &.equal {
@@ -308,7 +304,7 @@ table,
 }
 
 .row {
-  &.equal > div[class*='col-'] {
+  &.equal > div {
     display: flex;
     flex-direction: column;
   }
