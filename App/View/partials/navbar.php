@@ -14,11 +14,11 @@
 
     <div class="navbar-collapse collapse" id="navbar-main">
 
-      <form class="navbar-form navbar-left hidden-sm" role="search" action="<?php echo $url->create('search:keyword-search'); ?>">
+      <form class="navbar-form navbar-left hidden-sm hidden-xs" role="search" action="<?php echo $url->create('discover:parameters_apply'); ?>">
         <div class="form-group">
-          <input type="text" class="form-control" name="q" placeholder="Search">
+          <input type="text" class="form-control" name="parameters[title][pair][0]" placeholder="Search">
+          <input type="hidden" name="parameters[title][pair][1]" value="lk">
         </div>
-        <button type="submit" class="btn btn-default">Search...</button>
       </form>
 
       <ul class="nav navbar-nav navbar-left" >

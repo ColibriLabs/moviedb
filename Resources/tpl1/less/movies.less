@@ -21,27 +21,27 @@
   background-image: linear-gradient(
           to left,
           transparent 80%,
-          rgba(47, 52, 60, 1) 100%
+          darken(@gray-darker, 5%)
   ),
   linear-gradient(
           to right,
           transparent 80%,
-          rgba(47, 52, 60, 1) 100%
+          darken(@gray-darker, 5%)
   ),
   linear-gradient(
           -127deg,
           transparent 80%,
-          rgba(47, 52, 60, 1) 100%
+          darken(@gray-darker, 5%)
   ),
   linear-gradient(
           127deg,
           transparent 80%,
-          rgba(47, 52, 60, 1) 100%
+          darken(@gray-darker, 5%)
   ),
   linear-gradient(
-          rgba(47, 52, 60, .2),
-          rgba(47, 52, 60, .5) 50%,
-          rgba(47, 52, 60, 1.0)
+          fade(darken(@gray-darker, 5%), 20%),
+          fade(darken(@gray-darker, 5%), 50%) 50%,
+          darken(@gray-darker, 5%)
   );
 }
 
@@ -99,4 +99,23 @@
   width: 200px;
 }
 
+.movie-item {
+  margin: 10px;
+  background-color: @gray-darker;
 
+  .movie-item-poster {
+    padding: 0;
+  }
+
+}
+
+.short-overview {
+  font-size: 12px;
+}
+
+.movie-tagline {
+  color: @gray-light;
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 5px;
+}

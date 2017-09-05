@@ -2819,6 +2819,7 @@ return array (
       'height' => 'pictures.height',
       'width' => 'pictures.width',
       'file_path' => 'pictures.file_path',
+      'file_size' => 'pictures.file_size',
       'tmdb_file_path' => 'pictures.tmdb_file_path',
       'iso_639_1' => 'pictures.iso_639_1',
       'version' => 'pictures.version',
@@ -2831,6 +2832,7 @@ return array (
       'height' => 'height',
       'width' => 'width',
       'file_path' => 'file_path',
+      'file_size' => 'file_size',
       'tmdb_file_path' => 'tmdb_file_path',
       'iso_639_1' => 'iso_639_1',
       'version' => 'version',
@@ -2854,6 +2856,7 @@ return array (
       'id' => 'id',
       'height' => 'height',
       'width' => 'width',
+      'file_size' => 'file_size',
       'version' => 'version',
     ),
     'primary' => 
@@ -2925,6 +2928,23 @@ return array (
         )),
          'default' => NULL,
          'unsigned' => false,
+         'nullable' => false,
+         'autoIncrement' => false,
+         'primaryKey' => false,
+         'identity' => false,
+      )),
+      'file_size' => 
+      Colibri\Schema\Field::__set_state(array(
+         'column' => 'file_size',
+         'name' => 'file_size',
+         'type' => 
+        Colibri\Schema\Types\IntegerType::__set_state(array(
+           'length' => 11,
+           'precision' => 0,
+           'extra' => NULL,
+        )),
+         'default' => NULL,
+         'unsigned' => true,
          'nullable' => false,
          'autoIncrement' => false,
          'primaryKey' => false,

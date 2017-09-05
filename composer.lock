@@ -386,16 +386,16 @@
         },
         {
             "name": "colibrilabs/orm",
-            "version": "1.6.0",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/colibrilabs/orm.git",
-                "reference": "45b1c91c18679bfffd5dd3a629083d7f8f8189d2"
+                "reference": "ebdbf146d6261c98e06e9c23b2f429eae9a2fb80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/colibrilabs/orm/zipball/45b1c91c18679bfffd5dd3a629083d7f8f8189d2",
-                "reference": "45b1c91c18679bfffd5dd3a629083d7f8f8189d2",
+                "url": "https://api.github.com/repos/colibrilabs/orm/zipball/ebdbf146d6261c98e06e9c23b2f429eae9a2fb80",
+                "reference": "ebdbf146d6261c98e06e9c23b2f429eae9a2fb80",
                 "shasum": ""
             },
             "require": {
@@ -433,7 +433,7 @@
                 "colibri orm",
                 "php orm"
             ],
-            "time": "2017-07-12 14:03:03"
+            "time": "2017-07-14 15:34:48"
         },
         {
             "name": "colibrilabs/parameters",

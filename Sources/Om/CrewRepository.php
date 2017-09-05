@@ -7,7 +7,49 @@
 
 namespace ColibriLabs\Database\Om;
 
+use Colibri\Collection\CollectionInterface;
+use Colibri\Query\Expr\Column;
+use Colibri\Query\Expr\Func\Concat;
+use Colibri\Query\Expr\Func\IfFunc;
+use Colibri\Query\Expr\Func\Isnull;
+use Colibri\Query\Expr\Func\Rand;
+use ColibriLabs\Lib\Collection\ResultSetLazyCollection;
+
 class CrewRepository extends Base\BaseCrewRepository
 {
-  // ... write your custom code here
+
+  /**
+   * @param Movie $movie
+   * @return CollectionInterface
+   */
+  public function loadCrewForMovie(Movie $movie)
+  {
+    $query = $this->getQuery();
+
+    $query->setParameterized(true);
+    $query->clearSelectColumns();
+
+    $query->where(Crew::MOVIE_ID, $movie->getId());
+
+    $query->innerJoin(Profile::TABLE, [Crew::PROFILE_ID, Profile::ID]);
+    $query->innerJoin(Photo::TABLE, [Profile::ID, Photo::PROFILE_ID]);
+    $query->innerJoin(Picture::TABLE, [Photo::PICTURE_ID, Picture::ID]);
+
+    $query->addSelectColumns([
+      Crew::JOB, Crew::DEPARTMENT, Picture::ISO_639_1,
+      [Crew::ID, 'crewID'], [Profile::ID, 'profileID'],
+      [new IfFunc(new Isnull(new Column(Picture::FILE_PATH)), false, true), 'pictureExist'],
+      [new Concat('//s1.lostdb.com/', new Column(Picture::FILE_PATH), '#rnd', new Rand()), 'picturePath']
+    ]);
+
+    $query->groupBy(Crew::ID);
+
+    $query->setComment(__METHOD__);
+
+    $collection = new ResultSetLazyCollection();
+    $collection->setStatementIterator($this->executeQueryStmt());
+
+    return $collection;
+  }
+
 }

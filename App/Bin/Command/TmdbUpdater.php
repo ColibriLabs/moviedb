@@ -127,7 +127,8 @@ class TmdbUpdater extends Command
         $movie = $this->processMovie($response);
         $this->connection->commit();
 
-        $output->writeln(sprintf('Movie %d/%d (Memory: %s, Time spend: %s)', $movie->getId(), $i, Profiler::memoryUsage(), Profiler::timeSpendHumanize()));
+        $output->writeln(sprintf('Movie %d/%d (%d/%d) [Memory: %s, Time spend: %s]',
+          $movie->getId(), $i, $lastTmdbId - $i, $lastTmdbId, Profiler::memoryUsage(), Profiler::timeSpendHumanize()));
       } catch (\Exception $exception) {
         $this->connection->rollback();
         $output->writeln(sprintf('RQ: %s, Error: [%s] %s', $i, get_class($exception), $exception->getMessage()));
@@ -541,11 +542,11 @@ class TmdbUpdater extends Command
   {
     $this->setName('tmdb-updater');
     $this->setDescription('Iterate sequence movie id from TMDb API');
-
-    $configuration = new ParametersCollection(include_once __DIR__ . '/../../Config/Config.php');
+    
+    $configuration = new ParametersCollection(include __DIR__ . '/../../Config/Config.php');
 
     if (file_exists($configuration->path('application.dev-config'))) {
-      $configuration->merge(new ParametersCollection(include_once $configuration->path('application.dev-config')));
+      $configuration->merge(new ParametersCollection(include $configuration->path('application.dev-config')));
     }
 
     $configuration->handlePlaceholders();

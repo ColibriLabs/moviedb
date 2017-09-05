@@ -27,6 +27,20 @@ class Picture extends Base\BasePicture
     return sprintf('https://image.tmdb.org/t/p/original%s', $this->getTmdbFilePath());
   }
 
+  public function downloadPicture()
+  {
+    if (true === file_exists($this->getAbsolutePath())) {
+      unlink($this->getAbsolutePath());
+    }
+    
+    $bytes = file_put_contents($this->getAbsolutePath(),
+      file_get_contents($this->getTmdbPicturePath(), FILE_BINARY));
+  
+    chmod($this->getAbsolutePath(), 0775);
+
+    return $bytes;
+  }
+
   /**
    * @return string
    * @throws RuntimeException
@@ -38,11 +52,13 @@ class Picture extends Base\BasePicture
     if (null !== $configuration) {
       $urn = $configuration->path('urn_images');
 
-      if (false === file_exists($this->getAbsolutePath())) {
-        $bytes = file_put_contents($this->getAbsolutePath(),
-          file_get_contents($this->getTmdbPicturePath(), FILE_BINARY));
+      if (false === file_exists($this->getAbsolutePath()) || $this->getFilePath() === null) {
+
+        $bytes = $this->downloadPicture();
+        
         if ($bytes > 0) {
           $this->setFilePath($this->getPictureFilename());
+          $this->setFileSize($bytes);
           $repository = new PictureRepository();
           $repository->persist($this);
         }
@@ -84,6 +100,17 @@ class Picture extends Base\BasePicture
   public function getConfiguration()
   {
     return $this->getVirtual('configuration');
+  }
+  
+  /**
+   * @param ParametersCollection $configuration
+   * @return $this
+   */
+  public function setConfiguration(ParametersCollection $configuration)
+  {
+    $this->setVirtual('configuration', $configuration);
+    
+    return $this;
   }
 
   /**

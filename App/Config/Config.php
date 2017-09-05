@@ -1,7 +1,6 @@
 <?php
 
 return [
-  
   'root' => realpath(__DIR__ . '/../..'),
   
   'tmdb_root' => '{application.resources}/tmdb',
@@ -15,7 +14,7 @@ return [
     'root' => '{root}/App',
     'sources' => '{root}/Sources',
     'resources' => '{root}/Resources',
-
+    
     'static_path' => '/Resources/web/',
     'shared_path' => '/shared/',
     
@@ -32,7 +31,10 @@ return [
     'view' => [
       'root_directory' => '{application.root}/View',
     ],
-    'debug' => ['exceptions' => 1, 'php_errors' => 1,],
+    'debug' => [
+      'enabled' => false,
+      'exceptions' => 1, 'php_errors' => 1,
+    ],
   ],
   'server' => [
     'timezone' => 'Europe/Kiev',

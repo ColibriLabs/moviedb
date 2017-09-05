@@ -2,30 +2,43 @@
 
 /**
  * @var \Colibri\Template\Core\Compiler $this
- * @var \ColibriLabs\Database\Om\Movie $movie
- * @var \Colibri\URI\Builder $url
+ * @var \ColibriLabs\Database\Om\Movie  $movie
+ * @var \Colibri\URI\Builder            $url
+ * @var \ColibriLabs\Lib\Web\Metatag    $metatag
  */
 
 use ColibriLabs\Database\Om\CharacterRepository;
+use ColibriLabs\Database\Om\CrewRepository;
 use ColibriLabs\Database\Om\Genre;
 
-$genres = $movie->getGenres()->values(Genre::NAME_KEY);
+$characters = (new CharacterRepository())->loadCharactersForMovie($movie);
+$crews = (new CrewRepository())->loadCrewForMovie($movie);
 
-$charactersRepository = new CharacterRepository();
-$characters = $charactersRepository->loadCharactersForMovie($movie);
+$metatag->setOgTitle($movie->getTitle());
+$metatag->setOgDescription($movie->getOverview());
+$metatag->setOgImage($movie->getPosterPicture());
+$metatag->setOgImage($movie->getBackdropPicture());
 
-$this->setSection('title', $movie->getTitle());
+$metatag->setTwitterCard('photo');
+$metatag->setTwitterTitle($movie->getTitle());
+$metatag->setTwitterDescription($movie->getOverview());
+$metatag->setTwitterImage($movie->getPosterPicture());
+$metatag->setTwitterImage($movie->getBackdropPicture());
+
+$this->setSection('title',
+  sprintf('%s (%d)', $movie->getTitle(), (new \DateTime($movie->getReleaseDate()))->format('Y')));
+$this->setSection('description', $movie->getOverview());
 
 ?>
 <style>
   .movie-backdrop {
-    background-image: url(<?php echo $movie->getBackdrop()->getPicturePath(); ?>),
+    background-image: url(<?php echo $movie->getBackdropPicture(); ?>),
     url(<?php echo $url->staticPath('images/gradient2.jpg'); ?>);
   }
 </style>
 
 <div class="container-fluid ">
-  <div class="movie-backdrop row">
+  <div class="movie-backdrop row" data-src="<?php echo $movie->getBackdropPicture(); ?>">
     <div class="movie-overlay"></div>
   </div>
 </div>
@@ -66,16 +79,29 @@ $this->setSection('title', $movie->getTitle());
       </div>
 
       <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 movie-right-side col-md-pull-9 col-sm-pull-8">
-        <img alt="<?php echo $movie->getTitle(); ?>" class="hidden-xs img-responsive movie-poster" src="<?php echo $movie->getPoster()->getPicturePath(); ?>">
-        <?php echo $this->fetch('movie/partials/genres', ['genres' => $movie->getGenres(),]); ?>
+        <img alt="<?php echo $movie->getTitle(); ?>" class="hidden-xs img-responsive movie-poster"
+             src="<?php echo $movie->getPosterPicture(); ?>" data-src="<?php echo $movie->getBackdropPicture(); ?>">
+        <!--        --><?php //echo $this->fetch('movie/partials/genres', ['genres' => $movie->getGenres(),]); ?>
       </div>
 
-    </div>
-  </div>
+      <div class="col-lg-12">
+        <div class="bs-component">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#actors" data-toggle="tab" aria-expanded="true">Actors</a></li>
+            <li><a href="#crew" data-toggle="tab" aria-expanded="true">Crew</a></li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="actors">
+              <?php echo $this->fetch('movie/partials/people', ['characters' => $characters]); ?>
+            </div>
+            <div class="tab-pane fade" id="crew">
+<!--              --><?php //echo $this->fetch('movie/partials/crew', ['crews' => $crews]); ?>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <?php echo $this->fetch('movie/partials/people', ['characters' => $characters]); ?>
+
     </div>
   </div>
 

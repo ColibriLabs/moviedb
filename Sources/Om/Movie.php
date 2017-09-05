@@ -32,77 +32,22 @@ class Movie extends Base\BaseMovie
   }
   
   /**
-   * @return Character[]|EntityCollection
+   * @return string|null
    */
-  public function getCharacters()
+  public function getPosterPicture()
   {
-    if (false === $this->virtual->has('characters')) {
-      $characters = $this->repository->loadCharacters($this);
-      $this->virtual->set('characters', $characters);
-    }
-    
-    return $this->virtual->offsetGet('characters');
+    //
+    return $this->virtual->offsetExists('posterPicture')
+      ? $this->virtual->offsetGet('posterPicture')
+      : 'https://dummyimage.com/230x320/993d34/fff.png&text=lostDB';
   }
   
   /**
-   * @return Genre[]|EntityCollection
+   * @return string|null
    */
-  public function getGenres()
+  public function getBackdropPicture()
   {
-    return $this->virtual->get('genres', new EntityCollection([]));
-  }
-  
-  /**
-   * @param ArrayCollection $collection
-   * @return $this
-   */
-  public function setGenres(ArrayCollection $collection)
-  {
-    $this->virtual->set('genres', $collection);
-    
-    return $this;
-  }
-  
-  /**
-   * @return Picture
-   */
-  public function getPoster()
-  {
-    return $this->virtual->get('poster', new Picture());
-  }
-  
-  /**
-   * @param Picture $poster
-   * @return $this
-   */
-  public function setPoster(Picture $poster)
-  {
-    $this->virtual->offsetSet('poster', $poster);
-    
-    return $this;
-  }
-  
-  /**
-   * @return Picture
-   */
-  public function getBackdrop()
-  {
-    if (false === $this->virtual->has('backdrop')) {
-      
-    }
-    
-    return $this->virtual->get('backdrop', new Picture());
-  }
-  
-  /**
-   * @param Picture $backdrop
-   * @return $this
-   */
-  public function setBackdrop(Picture $backdrop)
-  {
-    $this->virtual->offsetSet('backdrop', $backdrop);
-    
-    return $this;
+    return $this->virtual->offsetGet('backdropPicture');
   }
   
   /**
@@ -111,6 +56,19 @@ class Movie extends Base\BaseMovie
   public function getRepository()
   {
     return $this->repository;
+  }
+
+  /**
+   * @return string
+   */
+  public function getShortOverview()
+  {
+    $number   = 35;
+    $words    = preg_split('/\s+/ui', $this->getOverview());
+    $dots     = count($words) > $number ? '...' : null;
+    $words    = array_slice($words, 0, $number);
+
+    return implode(' ', $words) . $dots;
   }
   
   /**

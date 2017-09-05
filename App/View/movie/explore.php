@@ -1,8 +1,12 @@
 <?php
 
 /**
- * @var \ColibriLabs\Database\Om\Movie[]|\Colibri\Core\Collection\EntityCollection $movies
+ * @var \Colibri\Router\Router $router
+ * @var \Colibri\Pagination\Paginator $pagination
+ * @var \ColibriLabs\Database\Om\Movie[] $movies
 */
+
+$movies = $pagination->getRepository()->findAll()->getCollection();
 
 ?>
 <div class="row">
@@ -14,29 +18,37 @@
     <div>
       <div class="row equal">
         <?php foreach ($movies as $movie): ?>
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 ">
-          <div class="well">
-            <?php if(null  !== $movie->getPoster()): ?>
-              <img class="img-responsive" src="<?php echo $movie->getPoster()->getPicturePath(); ?>" alt="">
-            <?php endif; ?>
-            <div>
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 ">
+
+          <div class="row movie-item">
+            <div class="col-lg-12 movie-item-poster">
+              <?php if($movie->getPosterPicture()): ?>
+                <img class="img-responsive" src="<?php echo $movie->getPosterPicture(); ?>" alt="<?php echo $movie->getTitle(); ?>">
+              <?php else: ?>
+                <img class="img-responsive" src="https://dummyimage.com/230x320/243235/fff.png&text=<?php echo $movie->getTitle(); ?>">
+              <?php endif; ?>
+            </div>
+            <div class="col-lg-12">
               <h4>
                 <a href="<?php echo $url->create('movie:item', [
                   'slug' => $movie->getTitleSlug(), 'id' => $movie->getId()
                 ]); ?>"><?php echo $movie->getTitle(); ?></a>
               </h4>
-              <h6><?php
-                echo implode(', ', $movie->getGenres()->values('name')->toArray())
-                ?></h6>
+              <?php if (null !== ($tagline = $movie->getTagline())): ?>
+                <div class="movie-tagline"><?php echo $movie->getTagline(); ?></div>
+              <?php endif; ?>
             </div>
           </div>
+          
         </div>
         <?php endforeach; ?>
       </div>
     </div>
-    <?php echo \ColibriLabs\Lib\Util\Profiler::memoryUsage(); ?>
-    <br>
-    <?php echo \ColibriLabs\Lib\Util\Profiler::timeSpend(); ?>
+
+    <?php echo $this->fetch('partials/pagination', [
+      'urlPath' => $router->getTargetUri(),
+      'pagination' => $pagination,
+    ]); ?>
 
   </div>
 </div>

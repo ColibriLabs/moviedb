@@ -26,9 +26,6 @@ return [
   
   'extensions' => [
     
-    \ColibriLabs\Lib\Orm\MovieCompleter::class => [],
-    \ColibriLabs\Lib\Orm\PictureCompleter::class => [],
-    
     'sluggable' => [],
     'timestampable' => [
       \ColibriLabs\Database\Om\Movie::class => [
@@ -66,6 +63,10 @@ return [
       \ColibriLabs\Database\Om\Company::class => [
         'created' => ['on' => ['create']],
         'updated' => ['on' => ['update', 'create']],
+      ],
+      \ColibriLabs\Database\Om\Picture::class => [
+        'created' => ['on' => ['create']],
+        'updated' => ['on' => ['update', 'create']],
       ]
     ],
     'versionable' => [
@@ -94,6 +95,9 @@ return [
         'properties' => ['version']
       ],
       \ColibriLabs\Database\Om\Company::class => [
+        'properties' => ['version']
+      ],
+      \ColibriLabs\Database\Om\Picture::class => [
         'properties' => ['version']
       ]
     ]

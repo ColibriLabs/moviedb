@@ -21,6 +21,7 @@ class BasePicture extends Entity
   const HEIGHT = 'pictures.height';
   const WIDTH = 'pictures.width';
   const FILE_PATH = 'pictures.file_path';
+  const FILE_SIZE = 'pictures.file_size';
   const TMDB_FILE_PATH = 'pictures.tmdb_file_path';
   const ISO_639_1 = 'pictures.iso_639_1';
   const VERSION = 'pictures.version';
@@ -30,6 +31,7 @@ class BasePicture extends Entity
   const HEIGHT_KEY = 'height';
   const WIDTH_KEY = 'width';
   const FILE_PATH_KEY = 'file_path';
+  const FILE_SIZE_KEY = 'file_size';
   const TMDB_FILE_PATH_KEY = 'tmdb_file_path';
   const ISO_639_1_KEY = 'iso_639_1';
   const VERSION_KEY = 'version';
@@ -55,6 +57,11 @@ class BasePicture extends Entity
    * @var string
    */
   public $filePath;
+  
+  /**
+   * @var integer
+   */
+  public $fileSize;
   
   /**
    * @var string
@@ -111,6 +118,14 @@ class BasePicture extends Entity
   public function getFilePath()
   {
     return $this->filePath;
+  }
+
+  /**
+   * @return integer
+   */
+  public function getFileSize()
+  {
+    return $this->fileSize;
   }
 
   /**
@@ -194,6 +209,17 @@ class BasePicture extends Entity
   public function setFilePath($filePath)
   {
     $this->filePath = $filePath;
+
+    return $this;
+  }
+
+  /**
+   * @param integer $fileSize
+   * @return $this
+   */
+  public function setFileSize($fileSize)
+  {
+    $this->fileSize = $fileSize;
 
     return $this;
   }

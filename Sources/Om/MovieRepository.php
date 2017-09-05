@@ -7,6 +7,11 @@
 
 namespace ColibriLabs\Database\Om;
 
+use Colibri\Query\Builder\Select;
+use Colibri\Query\Expr\Column;
+use Colibri\Query\Expr\Func\Concat;
+use Colibri\Query\Expr\Subquery;
+
 /**
  * Class MovieRepository
  * @package ColibriLabs\Database\Om
@@ -14,9 +19,63 @@ namespace ColibriLabs\Database\Om;
 class MovieRepository extends Base\BaseMovieRepository
 {
   
-  public function loadCharacters(Movie $movie)
+  /**
+   * @param $movieID
+   * @return Movie
+   */
+  public function getFullMovieItemByID($movieID)
   {
-    $repository = new CharacterRepository();
+    $query = $this->getQuery();
+  
+    $query->leftJoin(Backdrop::TABLE, [Movie::ID, Backdrop::MOVIE_ID]);
+    $query->leftJoin([Picture::TABLE, 'BP'], [Backdrop::PICTURE_ID, 'BP.id']);
+  
+    $query->leftJoin(Poster::TABLE, [Movie::ID, Poster::MOVIE_ID]);
+    $query->leftJoin([Picture::TABLE, 'PP'], [Poster::PICTURE_ID, 'PP.id']);
+  
+    $query->addSelectColumn(new Concat('//s1.lostdb.com/', new Column('BP.file_path')), 'backdropPicture');
+    $query->addSelectColumn(new Concat('//s1.lostdb.com/', new Column('PP.file_path')), 'posterPicture');
+  
+    $query->where(Movie::ID, $movieID);
+    $query->groupBy(Movie::ID);
+  
+    /** @var Movie $movie */
+    $movie = $this->findOne($query);
+    
+    return $movie;
+  }
+  
+  /**
+   * @return $this
+   */
+  public function processCompleteQuery()
+  {
+    $query = $this->getQuery();
+    
+    $this->getEntityMetadata()->getNames();
+
+    $subquery = new Subquery($query);
+    $outerQuery = new Select($query->getConnection());
+
+    $outerQuery->setFromTable($subquery);
+    $outerQuery->setAlias($subquery, 'M');
+
+    $outerQuery->addSelectColumns([
+      'M.id', 'M.collection_id', 'M.tmdb_id', 'M.imdb_id',
+      'M.budget', 'M.revenue', 'M.runtime', 'M.adult', 'M.release_date',
+      'M.title', 'M.original_title', 'M.iso_language',
+      'M.overview', 'M.tagline', 'M.tmdb_votes', 'M.tmdb_rating',
+      'M.imdb_votes', 'M.imdb_rating', 'M.mpaa_rating',
+      'M.version', 'M.created', 'M.updated',
+      [new Concat('//s1.lostdb.com/', new Column('PP.file_path')), 'posterPicture'],
+    ]);
+
+    $outerQuery->leftJoin(Poster::TABLE, ['M.id', Poster::MOVIE_ID]);
+    $outerQuery->leftJoin([Picture::TABLE, 'PP'], ['PP.id', Poster::PICTURE_ID]);
+
+    $outerQuery->groupBy('M.id');
+
+    return $this->setQuery($outerQuery);
   }
   
 }

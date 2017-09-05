@@ -20,6 +20,8 @@ use ColibriLabs\Lib\Orm\Sluggable;
 use ColibriLabs\Lib\Orm\Timestampable;
 use ColibriLabs\Lib\Orm\Versionable;
 use ColibriLabs\Lib\Util\Profiler;
+use ColibriLabs\Lib\Web\Assets;
+use ColibriLabs\Lib\Web\Metatag;
 
 /**
  *
@@ -55,6 +57,10 @@ class LostDbApplication extends Application\ConfigurableApplication
     Profiler::timerStart();
     
     $this->session->start();
+  
+    $this->serviceLocator->set('metatag', new Metatag());
+    $this->serviceLocator->set('assets', new Assets($this->url));
+    
     $this->configurationErrors()->configurationRoutes();
     $this->initializeColibriORM();
     $this->view->registerExtension(new class implements ExtensionInterface {
@@ -88,8 +94,6 @@ class LostDbApplication extends Application\ConfigurableApplication
       ->subscribeListener(new Timestampable($configuration))
       ->subscribeListener(new Versionable($configuration))
       ->subscribeListener(new Sluggable($configuration))
-      ->subscribeListener(new MovieCompleter($configuration))
-      ->subscribeListener(new PictureCompleter($configuration, $this->config))
     ;
 
     $dispatcher->addListener(ConnectionEvent::ON_QUERY, function(ConnectionEvent $event) {

@@ -3,9 +3,17 @@
 namespace ColibriLabs\Controller;
 
 use Behat\Transliterator\Transliterator;
+use Colibri\Pagination\Paginator;
+use Colibri\Query\Builder\Select;
+use Colibri\Query\Expr\Column;
+use Colibri\Query\Expr\Func\Concat;
 use Colibri\Query\Expr\Func\Rand;
+use Colibri\Query\Expr\Subquery;
+use ColibriLabs\Database\Om\Backdrop;
 use ColibriLabs\Database\Om\Movie;
 use ColibriLabs\Database\Om\MovieRepository;
+use ColibriLabs\Database\Om\Picture;
+use ColibriLabs\Database\Om\Poster;
 use ColibriLabs\Database\Om\PosterRepository;
 use ColibriLabs\Lib\ControllerWeb;
 
@@ -40,30 +48,12 @@ class MovieController extends ControllerWeb
 
   /**
    * @param $movieId
-   */
-  public function indexAction($movieId)
-  {
-    /** @var Movie $movie */
-    $movie = $this->movies->retrieve($movieId);
-    $slug = Transliterator::urlize(Transliterator::transliterate($movie->getTitle()));
-
-    $this->redirect(sprintf('movie/%d/%s', $movieId, $slug));
-  }
-
-  /**
-   * @param $movieId
    * @param $slug
    */
-  public function itemAction($movieId, $slug)
+  public function itemAction($movieId, $slug = null)
   {
-    /** @var Movie $movie */
-    $repository = new MovieRepository();
-    $movie = $repository->retrieve($movieId);
-
-//    var_dump($movie->getVirtualColumns());
-
     $this->setLayout('movie-layout');
-    $this->view->set('movie', $movie);
+    $this->view->set('movie', $this->movies->getFullMovieItemByID($movieId));
   }
   
   /**
@@ -85,11 +75,18 @@ class MovieController extends ControllerWeb
    */
   public function exploreAction()
   {
-    $this->movies->orderByBudget('DESC');
-    $this->movies->getQuery()->setLimit(60);
-    $collection = $this->movies->findAll()->getCollection();
+    $this->getRepository()->getQuery()
+      ->orderBy(Movie::BUDGET, 'DESC');
 
-    $this->view->set('movies', $collection);
+    $pagination = new Paginator($this->getRepository());
+    $pagination->setCountPerPage(60);
+    $pagination->setCurrentPage($this->request->getQuery('page', 1));
+
+    $pagination->processRepository();
+
+    $this->getRepository()->processCompleteQuery();
+    
+    $this->view->set('pagination', $pagination);
   }
 
   /**
@@ -102,6 +99,14 @@ class MovieController extends ControllerWeb
     $collection = $this->movies->findAll()->getCollection();
 
     $this->view->set('movies', $collection);
+  }
+
+  /**
+   * @return MovieRepository
+   */
+  private function getRepository()
+  {
+    return $this->movies;
   }
 
 }
